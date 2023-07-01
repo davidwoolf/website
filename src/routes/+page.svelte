@@ -26,6 +26,7 @@
         translate-y-0
         group-hover:translate-x-48
         group-hover:-translate-y-12
+        group-hover:scale-110
       "
       src="{assets}/luka-2.jpeg"
       alt="Luka in nature" />
@@ -38,6 +39,7 @@
         translate-y-24
         group-hover:-translate-x-6 
         group-hover:translate-y-32
+        group-hover:scale-110
       "
       src="{assets}/luka.jpeg"
       alt="My dog Luka" />
@@ -50,6 +52,7 @@
         -translate-y-12
         group-hover:-translate-x-56
         group-hover:-translate-y-20
+        group-hover:scale-90
       "
       src="{assets}/profile.jpeg"
       alt="David Woolf" />
