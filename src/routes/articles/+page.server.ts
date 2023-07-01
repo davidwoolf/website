@@ -2,7 +2,7 @@ import { error } from "@sveltejs/kit";
 
 export async function load({ fetch }) {
   
-  const res = await fetch(`/static/articles/list.json`);
+  const res = await fetch(`/list.json`);
 
   if (res.status === 404) {
     throw error(404, "page not found");

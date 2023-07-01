@@ -2,7 +2,7 @@
   import "../app.css";
 </script>
 
-<div class="min-h-screen grid grid-rows-[4rem_1fr_8rem]">
+<div class="min-h-screen grid grid-cols-1 grid-rows-[4rem_1fr_8rem]">
   <header class="flex items-center h-16 md:h-20 px-6 md:px-16 justify-between bg-white">
     <span class="font-semibold text-lg"><a href="/">David Woolf</a></span>
 

@@ -11,7 +11,20 @@ module.exports = {
 				lg: '1.125rem',
 				xl: '1.5rem',
 				'2xl': '2rem'
-			}
+			},
+			typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+							transition: "all .2s ease",
+							'&:hover': {
+								opacity: theme('opacity.70'),
+								textDecoration: "none",
+							}
+						}
+          },
+        },
+      }),
 		}
 	},
 	plugins: [
