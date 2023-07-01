@@ -11,14 +11,14 @@
       <span class="align-middle text-lg font-normal px-1 opacity-20">|</span> web
     </h1>
 
-    <p class="pt-2 text-base md:text-lg font-medium opacity-50 max-w-md">
+    <p class="pt-2 text-base md:text-lg font-medium opacity-50 max-w-lg">
       I'm David Woolf, a front-end software engineer, building products professionally for
-      over 10 years. Living in San Diego, California with my dog Luka.
+      over 10 years. Currently living in San Diego, California with my&nbsp;dog&nbsp;Luka.
     </p>
   </div>
 
   <div
-    class="scale-50 -translate-y-8 md:scale-75 md:-translate-y-16 lg:translate-y-0 xl:scale-100 grid grid-cols-1 grid-rows-1 place-items-center group">
+    class="origin-top scale-50 translate-y-8 md:origin-center md:scale-75 md:-translate-y-16 lg:translate-y-0 xl:scale-100 grid grid-cols-1 grid-rows-1 place-items-center group">
     <Image
       classes="
         w-48
@@ -58,7 +58,7 @@
 
 <style lang="postcss">
   .page-container {
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 13rem);
   }
 
   @media (min-width: 768px) {
