@@ -2,33 +2,35 @@
   import "../app.css";
 </script>
 
-<header class="flex items-center h-16 md:h-20 px-6 md:px-16 justify-between bg-white">
-  <span class="font-semibold text-lg">David Woolf</span>
+<div class="min-h-screen grid grid-rows-[4rem_1fr_8rem]">
+  <header class="flex items-center h-16 md:h-20 px-6 md:px-16 justify-between bg-white">
+    <span class="font-semibold text-lg"><a href="/">David Woolf</a></span>
 
-  <nav class="flex items-center gap-8">
-    <!-- <a class="border-b" href="https://github.com/davidwoolf" target="_blank">articles</a> -->
+    <nav class="flex items-center gap-8">
+      <a class="border-b" href="/articles">articles</a>
 
-    <a class="border-b" href="https://github.com/davidwoolf" target="_blank">github</a>
-  </nav>
-</header>
+      <a class="border-b" href="https://github.com/davidwoolf" target="_blank">github</a>
+    </nav>
+  </header>
 
-<slot />
+  <div>
+    <slot />
+  </div>
 
-<footer
-  class="py-12 flex flex-col justify-center text-center align-center text-xs opacity-50 leading-loose">
-  <span>Made in San Diego</span>
-  <span
-    >Built with <a href="http://svelte.dev/" class="hover:underline">Svelte</a> | Hosted
-    on
-    <a href="http://vercel.com/" class="hover:underline">Vercel</a></span>
-</footer>
+  <footer
+    class="flex flex-col justify-center items-between text-center text-xs leading-loose">
+    <span class="opacity-50">Made in San Diego</span>
+    <span class="opacity-50"
+      >Built with <a href="http://svelte.dev/" class="hover:underline">Svelte</a> | Hosted
+      on
+      <a href="http://vercel.com/" class="hover:underline">Vercel</a></span>
+
+    <span class="block"> 🏳️‍🌈 🐶 🏖️ </span>
+  </footer>
+</div>
 
 <style lang="postcss">
   :global(body) {
     -webkit-font-smoothing: antialiased;
-  }
-
-  .page-container {
-    min-height: calc(100vh - 5rem);
   }
 </style>

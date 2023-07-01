@@ -1,15 +1,16 @@
 <script lang="ts">
   import { assets } from "$app/paths";
   import Image from "@components/home/image.svelte";
+  import Heading1 from "@components/text/heading1.svelte";
 </script>
 
 <div
   class="page-container p-6 md:py-24 md:px-16 flex flex-col-reverse lg:grid lg:grid-cols-2 items-center">
   <div class="text-center lg:text-left">
-    <h1 class="text-xl md:text-2xl font-bold tracking-tight">
+    <Heading1>
       Software engineer
       <span class="align-middle text-lg font-normal px-1 opacity-20">|</span> web
-    </h1>
+    </Heading1>
 
     <p class="pt-2 text-base md:text-lg font-medium opacity-50 max-w-lg">
       I'm David Woolf, a front-end software engineer, building products professionally for
@@ -58,6 +59,14 @@
       alt="David Woolf" />
   </div>
 </div>
+
+<svelte:head>
+  <title>David Woolf — Front-end software engineer</title>
+  <meta
+    name="description"
+    content="I'm David Woolf, a front-end software engineer, building products professionally for
+  over 10 years" />
+</svelte:head>
 
 <style lang="postcss">
   .page-container {
