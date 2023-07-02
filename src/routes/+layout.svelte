@@ -19,8 +19,8 @@
 
   <footer
     class="flex flex-col justify-center items-between text-center text-xs leading-loose">
-    <span class="opacity-50">Made in San Diego</span>
-    <span class="opacity-50"
+    <span class="opacity-60">Made in San Diego</span>
+    <span class="opacity-60"
       >Built with <a href="http://svelte.dev/" class="hover:underline">Svelte</a> | Hosted
       on
       <a href="http://vercel.com/" class="hover:underline">Vercel</a></span>

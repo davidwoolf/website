@@ -1,7 +1,12 @@
 [
   {
+    "title": "Using window.postmessage with React",
+    "slug": "using-window-postmessage-react",
+    "excerpt": "Learn how to handle a window.postmessage events in a reactified way."
+  },
+  {
     "title": "Building davidwoolf.me",
     "slug": "building-davidwoolf-me",
-    "excerpt": "What better way to start this article section than with a dive into how this site was made."
+    "excerpt": "A quick dive into the technology this site was built."
   }
 ]

@@ -23,7 +23,7 @@ Each article is setup as its own wildcard url in SvelteKit:
 ```
 - routes
   - articles
-    - slug
+    - [slug]
       - +page.server.ts
       - +page.svelte
 ```
