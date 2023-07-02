@@ -20,6 +20,7 @@ module.exports = {
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
 							display: "inline-block",
+							fontSize: ".825em",
 							fontWeight: 500,
 							margin: 0,
 							padding: "0 .2rem",

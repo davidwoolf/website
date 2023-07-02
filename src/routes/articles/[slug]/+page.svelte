@@ -49,7 +49,7 @@
     prose-pre:font-medium
     prose-pre:m-0
     prose-pre:mb-2
-    prose-pre:md:text-base
+    prose-pre:md:text-sm
     prose-pre:mt-6
     prose-pre:max-w-full
     prose-pre:text-gray-900
