@@ -1,6 +1,6 @@
 [
   {
-    "title": "Using window.postmessage with React",
+    "title": "Using window.postMessage with React",
     "slug": "using-window-postmessage-react",
     "excerpt": "Learn how to handle a window.postmessage events in a reactified way."
   },

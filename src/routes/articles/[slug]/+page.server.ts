@@ -1,5 +1,6 @@
 import { error } from "@sveltejs/kit";
 import { marked } from 'marked';
+import hljs from 'highlight.js';
 
 export async function load({ fetch, params }) {
   const {slug} = params;
@@ -15,6 +16,14 @@ export async function load({ fetch, params }) {
 
   // if the res is accurate, we can grab the text response
   const post = await res.text();
+
+  // note: this is the deprecated way of doing this, but is required to work in SvelteKit
+  marked.setOptions({
+    highlight: function(code, language) {
+      const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+      return hljs.highlight(code, { language: validLanguage }).value;
+    }
+  });
 
   return {
     slug,

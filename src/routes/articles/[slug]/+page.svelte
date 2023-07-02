@@ -7,8 +7,8 @@
 <Container>
   <article
     class="
-
     prose
+    max-w-none
     
     prose-h1:m-0
     prose-h1:text-xl
@@ -22,6 +22,12 @@
     prose-h2:md:text-xl
     prose-h2:font-semibold
     prose-h2:tracking-snug
+
+    prose-h3:m-0
+    prose-h3:pt-4
+    prose-h3:text-base
+    prose-h3:md:text-lg
+   
 
     prose-p:m-0
     prose-p:pt-4
@@ -39,7 +45,7 @@
     prose-li:text-opacity-70
     prose-li:leading-normal
 
-    prose-pre:bg-zinc-100
+    prose-pre:shadow-sm
     prose-pre:font-medium
     prose-pre:m-0
     prose-pre:mb-2
@@ -47,7 +53,7 @@
     prose-pre:mt-6
     prose-pre:max-w-full
     prose-pre:text-gray-900
-    prose-pre:text-opacity-70
+    
     prose-pre:text-sm
     prose-pre:w-full
     prose-pre:overflow-scroll
@@ -55,3 +61,13 @@
     {@html data.post}
   </article>
 </Container>
+
+<!-- <style lang="postcss">
+  :global(.hljs-keyword) {
+    opacity: 0.7;
+  }
+
+  :global(.hljs-string) {
+
+  }
+</style> -->
