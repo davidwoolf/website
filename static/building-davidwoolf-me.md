@@ -62,7 +62,7 @@ export async function load({ fetch, params }) {
 
 The `page.svelte` file is run on either the server or client (this means you can add client-only logic like showing an alert dialog):
 
-```
+```html
 <script lang="ts">
   import type { PageData } from "../[slug]/$types";
   export let data: PageData;
