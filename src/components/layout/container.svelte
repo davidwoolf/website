@@ -1,6 +1,6 @@
 <div
   class="
-    max-w-4xl
+    max-w-3xl
     mx-auto
     p-6
     md:py-24

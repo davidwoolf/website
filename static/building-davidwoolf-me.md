@@ -23,7 +23,7 @@ Each article is setup as its own wildcard url in SvelteKit:
 ```
 - routes
   - articles
-    - slug
+    - [slug]
       - +page.server.ts
       - +page.svelte
 ```
@@ -56,13 +56,13 @@ export async function load({ fetch, params }) {
 
 - The `load` function is a SvelteKit feature for passing data to your svelte route component
 - Because we named the wildcard folder `[slug]`, we can grab that value from the `params` object available as an argument in `load`
-- SvelteKit comes with a `static` folder that acts as the public folder on the server, so you can load files directly from the folder (in this case `await fetch(`/${slug}.md`)`)
+- SvelteKit comes with a `static` folder that acts as the public folder on the server, so you can load files directly from the folder, in this case `await fetch(/${slug}.md)`
 - From there we check if there were any errors loading the markdown file. If it can't be found (`res.status === 404`), we want to show a "file not found" message, otherwise we'll throw 500.
 - If the file was found, we can grab the text value and then return the contents passed through `marked.parse`
 
 The `page.svelte` file is run on either the server or client (this means you can add client-only logic like showing an alert dialog):
 
-```
+```html
 <script lang="ts">
   import type { PageData } from "../[slug]/$types";
   export let data: PageData;
