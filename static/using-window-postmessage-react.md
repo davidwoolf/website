@@ -1,12 +1,12 @@
 # Using window.postMessage with React
 
-The `window.postMessage` method is a method that gives devs the ability to talk to other window object. However, since it uses an `addEventListener` call for receiving messages, it’s not obvious how you might use it within React.
+The `window.postMessage` function is a method that gives devs the ability to talk to other window object. However, since the method uses an `addEventListener` call for receiving messages, it’s not obvious how you might use it within React.
 
 _Note: this article assumes you understand the basics of how `postMessage` works. Please refer to the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) first if you haven’t used this method._
 
 ## Sending messages
 
-Let’s start with sending a message to another window. For our example, we’re going to assume that window is an iframe loading another react app that you have access to. To get started, we’ll setup our component to load the iframe and attach a `ref` to it:
+Let’s start with sending a message to another window. For our example, we’re going to assume that window is an iframe loading another react app that you have access to. To get started, we’ll setup our component to load the iframe and attach a `ref`:
 
 ```tsx
 import { useRef } from "react";
@@ -36,7 +36,7 @@ export function MyComponent() {
 ```
 
 - first we create a regular react component and render a button and iframe
-- the iframe is loading another site we control and also has a ref attached to it so we can get access to the DOM node
+- the iframe is loading another site we control and also has a ref attached, so we can get access to the DOM node
 - we have an `origin` variable, which is the url of the site where we are instantiating `MyComponent`
 - our button fires a `sendMessage` function which first checks if our ref exists (a recommended check when dealing with actual DOM nodes), and then runs `ref.current.contentWindow.postMessage`
 - `contentWindow` is how you access the window of an iframe, so we’re requesting to post a message to the iframe window with the value of "Hello iframe!", along with our origin (so the iframe knows where the message came from)
@@ -81,7 +81,7 @@ export function MyIFrameComponent() {
 ```
 
 - our iframe component stores the parent window origin (a value you should know and check if you are using the message listeners) and a local message state variable
-- if there is no message (the mounted state), it returns a default view. Otherwise it prints out the received message
+- if there is no message (the mounted state), the component returns a default view. Otherwise it prints out the received message
 - a `useEffect` function is used to listen for messages and clean up after itself when the effect is re-run or the component is unmounted (in this case, it’s during every render)
 - The listener calls `onRecievedMessage` which ensures the origin of the message came from our parent window and, if so, updates the `message` state variable
 
