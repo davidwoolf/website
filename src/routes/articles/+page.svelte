@@ -19,7 +19,7 @@
           </a>
         </Heading2>
 
-        <p class="font-medium opacity-60">
+        <p class="font-medium opacity-60 pt-1-5">
           {article?.excerpt}
         </p>
 
