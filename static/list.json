@@ -1,5 +1,14 @@
 [
-
+  {
+    "title": "Free form box rotation with canvas feedback",
+    "slug": "free-form-box-rotation",
+    "excerpt": "[tbd]"
+  },
+  {
+    "title": "Creating a web server with Deno",
+    "slug": "creating-a-web-server-deno",
+    "excerpt": "[tbd]"
+  },
   {
     "title": "Using window.postMessage with React",
     "slug": "using-window-postmessage-react",
