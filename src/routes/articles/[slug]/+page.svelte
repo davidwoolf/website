@@ -39,7 +39,6 @@
     prose-a:text-opacity-100
     
     prose-li:text-base
-    prose-li:md:text-lg
     prose-li:text-gray-900
     prose-li:text-opacity-70
     prose-li:leading-normal
