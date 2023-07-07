@@ -8,7 +8,7 @@ A combobox is an input and popup combination that provides filtering and keyboar
 
 ## General use
 
-Melt UI is a library made for Svelte, (if you’re tied to react, check out [Radix](https://www.radix-ui.com). Here's an example of how you'd use the component (Melt refers to them as "builders"):
+Melt UI is a library made for Svelte, (if you’re tied to react, check out [Radix](https://www.radix-ui.com)). Here's an example of how you'd use the component (Melt refers to them as "builders"):
 
 ```html
 <script lang="ts">
