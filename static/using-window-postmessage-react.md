@@ -1,6 +1,6 @@
 # Using window.postMessage with React
 
-The `window.postMessage` function is a method that gives devs the ability to talk to other window object. However, since the method uses an `addEventListener` call for receiving messages, it’s not obvious how you might use it within React.
+The `window.postMessage` function provides a simple way to talk to other window object. However, since the method uses an `addEventListener` call for receiving messages, it’s not obvious how you might use it within React.
 
 _Note: this article assumes you understand the basics of how `postMessage` works. Please refer to the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) first if you haven’t used this method._
 

@@ -7,7 +7,7 @@ module.exports = {
 				hint: '0.625rem',
 				xs: '0.75rem',
 				sm: '0.8125rem',
-				base: '0.9375rem',
+				base: '1rem',
 				lg: '1.125rem',
 				xl: '1.5rem',
 				'2xl': '2rem'
@@ -33,7 +33,7 @@ module.exports = {
 							borderRadius: "0.5rem",
 							borderWidth: 1,
 							borderStyle: "solid",
-							borderColor: theme("colors.slae.100"),
+							borderColor: theme("colors.slate.100"),
 							backgroundColor: "white",
 						},
             a: {

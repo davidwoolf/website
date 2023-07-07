@@ -19,14 +19,33 @@
           </a>
         </Heading2>
 
-        <p class="font-medium opacity-60 pt-1-5">
+        <p class="font-regular opacity-60 text-base pt-2">
           {article?.excerpt}
         </p>
 
-        <div class="mt-4">
+        <div class="flex items-center mt-4">
           <Link href="/articles/{article?.slug}">Read more</Link>
+
+          <ul class="flex items-center ml-auto gap-2">
+            {#each article?.tags as tag, index (index)}
+              <li
+                class="tag text-emerald-800 bg-orange-50 rounded-md p-1 px-2 text-xs font-medium">
+                {tag}
+              </li>
+            {/each}
+          </ul>
         </div>
       </article>
     {/each}
   </div>
 </Container>
+
+<style>
+  .tag {
+    background: linear-gradient(
+      180deg,
+      rgba(16, 185, 129, 0.07) 0%,
+      rgba(16, 185, 129, 0.15) 100%
+    );
+  }
+</style>
