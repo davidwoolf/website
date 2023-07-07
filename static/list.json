@@ -1,12 +1,20 @@
 [
   {
+    "title": "Building a combobox for Melt UI",
+    "slug": "melt-combobox",
+    "excerpt": "These past few weeks, I have been working on an accessible combobox with my good friend and amazing developer, Eric Skram...",
+    "tags": ["svelte", "accessibility"]
+  },
+  {
     "title": "Using window.postMessage with React",
     "slug": "using-window-postmessage-react",
-    "excerpt": "Learn how to handle a window.postmessage events in a reactified way."
+    "excerpt": "The window.postMessage function provides a simple way to talk to other window object. However, implementing it in React requires a little more setup...",
+    "tags": ["react"]
   },
   {
     "title": "Building davidwoolf.me",
     "slug": "building-davidwoolf-me",
-    "excerpt": "A quick dive into the technology this site was built."
+    "excerpt": "A quick dive into the technology this site was built on.",
+    "tags": ["svelte"]
   }
 ]

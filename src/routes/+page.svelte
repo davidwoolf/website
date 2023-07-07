@@ -12,7 +12,7 @@
       <span class="align-middle text-lg font-normal px-1 opacity-20">|</span> web
     </Heading1>
 
-    <p class="pt-2 text-base md:text-lg font-medium opacity-50 max-w-lg">
+    <p class="pt-2 text-base md:text-lg font-regular opacity-60 max-w-lg">
       I'm David Woolf, a front-end software engineer, building products professionally for
       over 10 years. Currently living in San Diego, California with my&nbsp;dog&nbsp;Luka.
     </p>

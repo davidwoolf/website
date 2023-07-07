@@ -32,7 +32,6 @@
     prose-p:m-0
     prose-p:pt-4
     prose-p:text-base
-    prose-p:md:text-lg
     prose-p:text-gray-900
     prose-p:text-opacity-70
     prose-p:leading-normal
