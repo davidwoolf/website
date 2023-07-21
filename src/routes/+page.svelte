@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <History />
+  <!-- <History /> -->
 </div>
 
 <svelte:head>
