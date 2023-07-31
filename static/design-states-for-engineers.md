@@ -59,7 +59,7 @@ If you answered yes to any of the above, then the state can be defined as dynami
 
 ### Does the state transition in a complex way based on some event
 
-This is basically an obstuse way to define animations and transitions. For example, should a header stay fixed to the top when scrolling? Should text animate in on page load? These may be simple to answer questions, but they are questions that you might not have an obvious answer from looking at the design.
+This is basically an obtuse way to define animations and transitions. For example, should a header stay fixed to the top when scrolling? Should text animate in on page load? These may be simple to answer questions, but they are questions that you might not have an obvious answer from looking at the design.
 
 ### Would a state you normally classify as binary or _nth_ cause a change to the design outside of the component itself
 
