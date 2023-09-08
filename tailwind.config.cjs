@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}', './static/**/*.md'],
 	theme: {
 		extend: {
 			fontSize: {
@@ -33,7 +33,7 @@ module.exports = {
 							borderRadius: "0.5rem",
 							borderWidth: 1,
 							borderStyle: "solid",
-							borderColor: theme("colors.slate.100"),
+							borderColor: theme("colors.slate.200"),
 							backgroundColor: "white",
 						},
             a: {

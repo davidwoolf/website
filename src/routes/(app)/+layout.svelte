@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../app.css";
+  import "../../app.css";
 </script>
 
 <div class="min-h-screen grid grid-cols-1 grid-rows-[4rem_1fr_8rem]">

@@ -28,6 +28,7 @@
     prose-h3:text-base
     prose-h3:md:text-lg
    
+    prose-iframe:mt-4
 
     prose-p:m-0
     prose-p:pt-4
@@ -60,12 +61,7 @@
   </article>
 </Container>
 
-<!-- <style lang="postcss">
-  :global(.hljs-keyword) {
-    opacity: 0.7;
-  }
-
-  :global(.hljs-string) {
-
-  }
-</style> -->
+<svelte:head>
+  <title>{data.title} — David Woolf</title>
+  <meta name="description" content={data.excerpt} />
+</svelte:head>
