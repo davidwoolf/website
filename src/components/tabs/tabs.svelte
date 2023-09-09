@@ -4,7 +4,7 @@
   const {
     elements: { root, list, content, trigger },
   } = createTabs({
-    defaultValue: "tab-html",
+    defaultValue: "tab-preview",
   });
 
   const triggers = [

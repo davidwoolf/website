@@ -27,6 +27,13 @@
     prose-h3:pt-4
     prose-h3:text-base
     prose-h3:md:text-lg
+
+    prose-h4:m-0
+    prose-h4:-mb-2
+    prose-h4:pt-4
+    prose-h4:font-semibold
+    prose-h4:text-base
+    prose-h4:md:text-base
    
     prose-iframe:mt-4
 
@@ -56,6 +63,9 @@
     prose-pre:text-sm
     prose-pre:w-full
     prose-pre:overflow-scroll
+
+    prose-table:mb-0
+    prose-table:mt-4
   ">
     {@html data.post}
   </article>

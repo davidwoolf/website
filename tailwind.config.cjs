@@ -15,7 +15,7 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
-						"li > code, p > code": {
+						"li > code, p > code, table code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
@@ -46,15 +46,16 @@ module.exports = {
 						".hljs-tag, .hljs-keyword, .hljs-built_in, .hljs-params": {
 							color: theme("colors.slate.500"),
 						},
-						".hljs-name, .hljs-attr": {
-							color: theme("colors.slate.800"),
-						},
-						".hljs-string": {
+						".hljs-name, .hljs-attr, .hljs-selector-tag": {
 							color: theme("colors.emerald.700"),
 						},
-						".hljs-title": {
+						".hljs-comment": {
+							color: theme("colors.slate.500"),
+						},
+						".hljs-title, .hljs-string, .hljs-attribute": {
 							color: theme("colors.emerald.900"),
 						},
+						
           },
         },
       }),

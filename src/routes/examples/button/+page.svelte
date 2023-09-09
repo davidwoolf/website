@@ -11,10 +11,67 @@
 
 <Tabs>
   <div slot="preview">
-    <button
-      class="bg-white rounded-md border border-teal-700 border-opacity-30 shadow-sm py-1 px-4 font-medium text-sm text-teal-950">
-      click me
-    </button>
+    <form class="flex flex-col gap-4" novalidate>
+      <label class="flex flex-col gap-1">
+        <span class="font-medium text-sm text-gray-700">First name</span>
+        <input
+          class="border border-teal-900 border-opacity-10 text-sm rounded-md p-2 h-8"
+          name="first_name"
+          placeholder="John..."
+          required
+          type="text" />
+      </label>
+
+      <label class="flex flex-col gap-1">
+        <span class="font-medium text-sm text-gray-700">First name</span>
+        <input
+          class="border border-teal-900 border-opacity-10 text-sm rounded-md p-2 h-8"
+          name="last_name"
+          placeholder="Doe..."
+          type="text" />
+      </label>
+
+      <button
+        class="
+        bg-teal-700
+        rounded-md
+        border
+        border-teal-700
+        border-opacity-30
+        h-8
+        shadow-sm
+        py-1
+        px-4
+        font-medium
+        text-sm
+        text-white
+        
+        active:shadow-inner"
+        type="submit"
+        formnovalidate={false}>
+        submit fields
+      </button>
+
+      <button
+        class="
+        bg-white
+        rounded-md
+        border
+        border-teal-700
+        border-opacity-30
+        h-8
+        shadow-sm
+        py-1
+        px-4
+        font-medium
+        text-sm
+        text-teal-950
+        
+        active:shadow-inner"
+        type="reset">
+        reset fields
+      </button>
+    </form>
   </div>
 
   <div slot="html" class="h-full flex-1 flex">
