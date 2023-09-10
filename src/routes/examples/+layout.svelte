@@ -10,6 +10,9 @@
   }
 
   :global(body) {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     margin: 0;
     overflow: hidden;
     padding: 0;
@@ -17,9 +20,7 @@
 
   .main {
     height: 100vh;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     position: relative;
     width: 100vw;
   }
@@ -57,23 +58,6 @@
     font-size: 0.875rem;
     height: 2rem;
     padding: 0.5rem;
-  }
-
-  :global(.button) {
-    background-color: rgb(15 118 110);
-    border: 1px solid rgb(15 118 110 / 0.3);
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    color: rgb(255 255 255);
-    font-size: 0.875rem;
-    font-weight: 500;
-    height: 2rem;
-    padding: 0.25rem 1rem;
-  }
-
-  :global(.button.button__subdued) {
-    background-color: rgb(255 255 255);
-    color: rgb(4 47 46);
   }
 
   :global(.tab__code) {

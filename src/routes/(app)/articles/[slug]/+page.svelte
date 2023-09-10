@@ -43,6 +43,7 @@
     prose-p:leading-normal
 
     prose-a:text-opacity-100
+    prose-a:break-all
 
     prose-ul:m-0
     prose-ul:pt-3
@@ -76,6 +77,9 @@
     prose-figure:m-0
     prose-figure:pt-6
     prose-figure:pb-2
+
+    prose-hr:mt-8
+    prose-hr:mb-0
   ">
     {@html data.post}
   </article>

@@ -29,7 +29,7 @@
 </script>
 
 <div {...$root} use:root class="tabs__container">
-  <div {...$list} use:list class="tabs__navigation">
+  <nav {...$list} use:list class="tabs__navigation">
     {#each triggers as triggerItem}
       <button
         {...$trigger(triggerItem.id)}
@@ -40,9 +40,7 @@
         {triggerItem.title}
       </button>
     {/each}
-
-    <div aria-hidden="true" class="tabs__navigation--bg" />
-  </div>
+  </nav>
 
   <div
     {...$content("tab-preview")}
@@ -67,34 +65,31 @@
   }
 
   .tabs__navigation {
+    align-items: center;
+    background-color: rgb(4 47 46 / 0.1);
     display: flex;
     flex: 0 0 3rem;
-    overflow-x: auto;
-  }
-
-  .tabs__navigation--bg {
-    background-color: rgb(4 47 46 / 0.1);
-    flex: 1 1 0%;
     height: 3rem;
+    overflow-x: auto;
+    padding: 0 0.5rem;
   }
 
   .tabs__trigger {
     all: unset;
     color: rgb(31 41 55);
+    border-radius: 0.25rem;
+    cursor: pointer;
     font-size: 0.875rem;
     font-weight: 500;
-    height: 3rem;
+    height: 2rem;
     padding: 0 1rem;
-    transition: transform 0.15s ease;
+    outline: revert;
     user-select: none;
   }
 
-  .tabs__trigger:focus-visible {
-    transform: translateY(-0.125rem);
-  }
-
-  .tabs__trigger[data-state="inactive"] {
-    background-color: rgb(4 47 46 / 0.1);
+  .tabs__trigger[data-state="active"] {
+    background-color: rgb(255 255 255);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 
   .tabs__content {

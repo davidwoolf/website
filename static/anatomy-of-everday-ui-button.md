@@ -1,10 +1,10 @@
 #  The anatomy of everyday UI: buttons
 
-Buttons are a great example of hidden complexity. Functionality, style, and accessibility all contribute to a massive unseen iceberg simmering beneath the surface. This article goes over the nuances that can arise when creating buttons in different contexts.
+Buttons are a great example of hidden complexity. Functionality, style, and accessibility all contribute to an unseen iceberg floating beneath the surface. This article goes over the nuances of buttons and the issues that can arise when creating buttons in different contexts.
 
 ## Button types
 
-A button can be of type `submit`, `reset`, or `button`. The `submit` type is the default state when the button is associated with a form or `type` is empty, missing or invalid. Here are some examples:
+To get started, lets review what types of buttons are available on the web. A button can be of type `submit`, `reset`, or `button`. The `submit` type is the default state when the button is associated with a form or `type` is empty, missing or invalid. Here are some examples:
 
 ```html
 <!-- defaults to `type="submit"` -->
@@ -31,7 +31,6 @@ src="/examples/button/submit"
 title="Example and code for buttons of type submit"></iframe>
 
 #### Form mapping
-`@TODO: outline how these values can be overridden if applied (do they plug in missing values or actually override the form?)`
 
 Submit buttons can include many form details normally applied to the `<form>` element via attributes:
 
@@ -42,7 +41,7 @@ Submit buttons can include many form details normally applied to the `<form>` el
 | **formtarget**  | maps to the form element&rsquo;s `target` attribute |
 | **formenctype** | maps to the form element&rsquo;s `enctype` attribute |
 
-
+Providing these values to the submit button will override the value set on the form itself.
 
 #### Mixed button use in forms
 
@@ -52,7 +51,7 @@ Because buttons default to `type="submit"`, use of buttons inside a form that sh
 
 Only submit buttons can trigger a form&rsquo;s validation process. This is referred to as "constraint validation" in the [W3C working draft](https://www.w3.org/TR/2011/WD-html5-20110525/association-of-controls-and-forms.html#barred-from-constraint-validation). This means other buttons within a form will not inadvertently trigger form validation for child fields.
 
-Additionally, the `formnovalidate` boolean attribute can be added to control whether form validation happens or not. However, if the button&rsquo;s parent `<form>` tag includes a `novalidate` attribute and the button includes `formnovalidate="false"`, validation will still be skipped.
+Additionally, the `formnovalidate` boolean attribute can be added to control whether form validation happens or not. However, if the button&rsquo;s parent `<form>` tag includes a `novalidate` attribute and the button includes `formnovalidate="false"`, validation will still be skipped. This can be confusing since other `form*` attributes on the submit button _will_ override the parent `<form>`&rsquo; value of the same type.
 
 ### Reset buttons
 
@@ -61,7 +60,7 @@ width="100%"
 src="/examples/button/reset"
 title="Example and code for buttons of type reset"></iframe>
 
-When using `type="reset"` in a form, you can clear form values without any Javascript.
+When using `type="reset"` in a form, you can clear form values without any Javascript. It&rsquo;s generally not recommended to do this, but is a built-in button type nonetheless.
 
 ## Styling
 
@@ -149,11 +148,77 @@ If your button looks and acts like a regular link, use an anchor tag. This will 
 
 ## Accessibility
 
-### Avoiding the title attribute
+Due to the nature of buttons and their primary use in completing actions, ensuring proper accessibility markup is included is critical to creating great experiences for all actors. While the following mostly concerns non-form submission buttons, some information relating to titles and labels can be useful in all button contexts. 
+
+### Aria attributes
+
+#### Expandable content
+
+If a button controls the visibility of other content, it should include the `aria-expanded` attribute with a `true` or `false` value.
+
+#### Dialogs and other popups
+
+Building on `aria-expanded`, if you are creating buttons that open up content considered to be a popup, there are two additional attributes that need to be added: `aria-haspopup` and `aria-controls`. The `aria-haspopup` attribute accepts one of the following values:
+
+- dialog
+- menu
+- listbox
+- tree
+- grid
+- true
+
+The `aria-controls` value should be the `id` of the popup&rsquo;s top level element
+
+<iframe 
+width="100%" 
+src="/examples/button/aria-expanded"
+title="Example and code for using a button as a dialog"></iframe>
+
+Generally, `dialog` is the value you want for `aria-haspopup`. Here are some examples of when to use each value:
+
+
+| value | use case |
+| - | - |
+| dialog | Popups that take over the screen. Examples include alerts, confirmations, etc. |
+| menu | Menu bars with dropdowns |
+| listbox | Comboboxes design pattern with a list of items (one axis) |
+| grid | Comboboxes design pattern with a grid of items (multi axis) |
+| tree | Popup that shows a folder tree like structure |
+| true | Exists for ARIA 1.0 backwards compatibility and is the same as using `menu` |
+
+#### Toggle Buttons
+To use buttons as a toggle, make sure to include `aria-pressed` with one of the following values:
+
+| value | description |
+| ----- | ----------- |
+| true | actively pressed |
+| false | not actively pressed | 
+| mixed | partially pressed |
+
+
+<iframe 
+width="100%" 
+src="/examples/button/aria-pressed"
+title="Example and code for using a button as a toggle"></iframe>
+
+
+_Note: This attribute won't actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
+
+### Best user experience practices 
+
+#### Avoid the title attribute
 
 While the `title` attribute might seem like a good use case for providing additional information about a button, it is frequently inaccessible to screen readers and actors not using a mouse pointer. For buttons without a label, use the `aria-label` attribute.
 
-### Aria labels
+#### Avoid disabled states
+It is a common pattern to disable buttons until some other step is completed. _Stop doing this_, especially in forms. Disabled buttons are confusing to all actors, and can be especially frustrating for those using screen reader devices. Here are some common uses of disabled buttons and their alternatives:
+
+| use case | alternative |
+| - | - |
+| invalid form fields | let them submit! use client and server side validation to give feedback on improper or missing values |
+| no change since last save | allow clicking and provide a notification that there&rsquo;s nothing to update |
+| not enough access | avoid using buttons and consider removing unactionable content entirely |
+| sold out item | provide an error notification or replace the button entirely with a message that the item is sold out | 
 
 ### Using custom elements as buttons
 If a non `<button>` element has to be used to act as a button (ie: it looks and acts like a regular button), it&rsquo;s important to add additional markup to communicate that quirk to actors and devices. Here is an example of a div being used as a button:
@@ -163,16 +228,18 @@ width="100%"
 src="/examples/button/role-button"
 title="Example and code for using a div as a button"></iframe>
 
-### Avoiding disabled states
-`disabled=DONT DO IT`
+---
+## Notes
 
-### Toggle Buttons
-`aria-pressed=true|false`
+<footer>
 
+- MDN Button Docs: <br />https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+- W3C button element reference: <br />https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html
+- WAI ARIA Button examples: <br />https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/
+- WAI ARIA Button patterns: <br />https://www.w3.org/WAI/ARIA/apg/patterns/button/
+- MDN ARIA Button roles and attributes: <br />https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
+- MDN aria-haspopup reference: <br />https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
+- DigitalA11y aria-haspopup reference: <br />https://www.digitala11y.com/aria-haspopup-properties/
+- W3C CSS3 UI Cursor information: <br />https://drafts.csswg.org/css-ui-3/#valdef-cursor-pointer
 
-
-
-## Buttons in Typescript
--  attributes
-
-
+</footer>

@@ -32,8 +32,8 @@ module.exports = {
 						"h2 > code, h3 > code, h4 > code": {
 							fontWeight: 700,
 						},
+						// prose-iframe:* is not supported
 						iframe: {
-							// prose-iframe:* is not supported
 							aspectRatio: "1 / 1",
 							borderRadius: "0.5rem",
 							boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
