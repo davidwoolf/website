@@ -33,7 +33,8 @@
                 clip-rule="evenodd" /></svg>
           </button>
 
-          <p>dialog content goes here</p>
+          <h2 {...$title} use:title class="title">Dialog title</h2>
+          <p {...$description} use:description class="description">Dialog description</p>
         </div>
       {/if}
     </div>
@@ -83,16 +84,16 @@
   }
 
   .content {
-    align-items: center;
     background: white;
     border-radius: 0.5rem;
     border: 1px solid #e2e8f0;
     box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     left: 50%;
     min-height: 8rem;
-    padding: 1rem;
+    padding: 2rem;
     position: fixed;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
@@ -101,7 +102,14 @@
     z-index: 60;
   }
 
-  .content p {
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .description {
+    margin: 0.5rem 0 0;
     opacity: 0.6;
   }
 
