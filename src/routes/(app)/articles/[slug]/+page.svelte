@@ -43,7 +43,6 @@
     prose-p:leading-normal
 
     prose-a:text-opacity-100
-    prose-a:break-all
 
     prose-ul:m-0
     prose-ul:pt-3

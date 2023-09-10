@@ -50,6 +50,9 @@ module.exports = {
 								textDecoration: "none",
 							}
 						},
+						"footer a": {
+							wordBreak: "break-all",
+						},
 						cite: {
 							fontStyle: "normal"
 						},
