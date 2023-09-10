@@ -40,6 +40,10 @@
   </div>
 </Container>
 
+<svelte:head>
+  <title>Articles — David Woolf</title>
+</svelte:head>
+
 <style>
   .tag {
     background: linear-gradient(

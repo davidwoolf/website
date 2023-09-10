@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@melt-ui/svelte": "^0.47.6",
 		"highlight.js": "^11.8.0",
 		"marked": "^5.1.0",
 		"marked-highlight": "^2.0.1"

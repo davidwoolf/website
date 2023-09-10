@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}', './static/**/*.md'],
 	theme: {
 		extend: {
 			fontSize: {
@@ -15,7 +15,7 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
-						"li > code, p > code": {
+						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
@@ -29,12 +29,19 @@ module.exports = {
 								display: "none"
 							},
 						},
-						pre: {
+						"h2 > code, h3 > code, h4 > code": {
+							fontWeight: 700,
+						},
+						// prose-iframe:* is not supported
+						iframe: {
+							aspectRatio: "1 / 1",
 							borderRadius: "0.5rem",
-							borderWidth: 1,
-							borderStyle: "solid",
-							borderColor: theme("colors.slate.100"),
-							backgroundColor: "white",
+							boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+							marginTop: "1rem",
+
+							"@media(min-width: 768px)": {
+								aspectRatio: "16 / 9",
+							}
 						},
             a: {
 							transition: "all .2s ease",
@@ -43,18 +50,22 @@ module.exports = {
 								textDecoration: "none",
 							}
 						},
+						cite: {
+							fontStyle: "normal"
+						},
 						".hljs-tag, .hljs-keyword, .hljs-built_in, .hljs-params": {
 							color: theme("colors.slate.500"),
 						},
-						".hljs-name, .hljs-attr": {
-							color: theme("colors.slate.800"),
-						},
-						".hljs-string": {
+						".hljs-name, .hljs-attr, .hljs-selector-tag": {
 							color: theme("colors.emerald.700"),
 						},
-						".hljs-title": {
+						".hljs-comment": {
+							color: theme("colors.slate.500"),
+						},
+						".hljs-title, .hljs-string, .hljs-attribute": {
 							color: theme("colors.emerald.900"),
 						},
+						
           },
         },
       }),
