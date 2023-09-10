@@ -50,6 +50,9 @@ module.exports = {
 								textDecoration: "none",
 							}
 						},
+						cite: {
+							fontStyle: "normal"
+						},
 						".hljs-tag, .hljs-keyword, .hljs-built_in, .hljs-params": {
 							color: theme("colors.slate.500"),
 						},

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createTabs } from "@melt-ui/svelte";
+  export let tabs = ["preview", "html", "css"];
 
   const {
     elements: { root, list, content, trigger },
@@ -7,11 +8,24 @@
     defaultValue: "tab-preview",
   });
 
-  const triggers = [
-    { id: "tab-preview", title: "Preview" },
-    { id: "tab-html", title: "HTML" },
-    { id: "tab-css", title: "CSS" },
-  ];
+  function getTabName(tab: string) {
+    switch (tab) {
+      case "preview":
+        return "Preview";
+      case "html":
+        return "HTML";
+      case "css":
+        return "CSS";
+
+      default:
+        return "";
+    }
+  }
+
+  const triggers = tabs.map((tab) => ({
+    id: `tab-${tab}`,
+    title: getTabName(tab),
+  }));
 </script>
 
 <div {...$root} use:root class="tabs__container">

@@ -29,7 +29,7 @@
     prose-h3:md:text-lg
 
     prose-h4:m-0
-    prose-h4:-mb-2
+    prose-h4:-mb-3
     prose-h4:pt-4
     prose-h4:font-semibold
     prose-h4:text-base
@@ -72,6 +72,10 @@
 
     prose-table:mb-0
     prose-table:mt-4
+
+    prose-figure:m-0
+    prose-figure:pt-6
+    prose-figure:pb-2
   ">
     {@html data.post}
   </article>
