@@ -5,7 +5,7 @@
 
 <Tabs>
   <div slot="preview">
-    <form class="form" novalidate action="/">
+    <form class="form">
       <label class="label">
         <span>First name</span>
         <input
@@ -21,8 +21,7 @@
         <input class="input" name="last_name" placeholder="Doe..." type="text" />
       </label>
 
-      <button class="button" type="submit" formnovalidate={false} formaction="/articles">
-        submit fields</button>
+      <button class="button" type="submit"> submit fields</button>
     </form>
   </div>
 
