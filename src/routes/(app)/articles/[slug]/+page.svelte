@@ -34,8 +34,6 @@
     prose-h4:font-semibold
     prose-h4:text-base
     prose-h4:md:text-base
-   
-    prose-iframe:mt-4
 
     prose-p:m-0
     prose-p:pt-4
@@ -45,24 +43,32 @@
     prose-p:leading-normal
 
     prose-a:text-opacity-100
+
+    prose-ul:m-0
+    prose-ul:pt-3
     
+    prose-li:m-0
+    prose-li:pt-1
     prose-li:text-base
     prose-li:text-gray-900
     prose-li:text-opacity-70
     prose-li:leading-normal
 
-    prose-pre:shadow-sm
+    prose-pre:bg-white
+    prose-pre:border
+    prose-pre:border-slate-200
+    prose-pre:rounded-lg
     prose-pre:font-medium
     prose-pre:m-0
+    prose-pre:max-w-full
     prose-pre:mb-2
     prose-pre:md:text-sm
     prose-pre:mt-6
-    prose-pre:max-w-full
+    prose-pre:overflow-scroll
+    prose-pre:shadow-sm
     prose-pre:text-gray-900
-    
     prose-pre:text-sm
     prose-pre:w-full
-    prose-pre:overflow-scroll
 
     prose-table:mb-0
     prose-table:mt-4

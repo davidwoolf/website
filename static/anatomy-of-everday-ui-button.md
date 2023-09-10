@@ -27,8 +27,7 @@ A button can be of type `submit`, `reset`, or `button`. The `submit` type is the
 
 <iframe 
 width="100%" 
-class="aspect-square md:aspect-video rounded-lg mt-4"
-src="/examples/button"></iframe>
+src="/examples/button/submit"></iframe>
 
 #### Form mapping
 `@TODO: outline how these values can be overridden if applied (do they plug in missing values or actually override the form?)`
@@ -58,8 +57,7 @@ Additionally, the `formnovalidate` boolean attribute can be added to control whe
 
 <iframe 
 width="100%" 
-class="aspect-square md:aspect-video rounded-lg mt-4"
-src="/examples/button"></iframe>
+src="/examples/button/reset"></iframe>
 
 When using `type="reset"` in a form, you can clear form values without any Javascript.
 
@@ -73,13 +71,20 @@ When using `type="reset"` in a form, you can clear form values without any Javas
 
 ## Styling
 
-```css
-button {
-  all: unset;
-}
-```
+Buttons are configured with default styles based on the browser and operating system. This usually includes:
 
-All: unset
+- background color
+- border radius, weight, and color
+- color
+- height
+- padding
+
+There are a few ways to remove this styling by default:
+
+<iframe 
+width="100%" 
+src="/examples/button/default-style"></iframe>
+
 ### Hover, focus, active
 
 ### Touch vs mouse
@@ -90,8 +95,19 @@ All: unset
 ## Accessibility 
 
 ### Aria labels
+
 ### Pseudo buttons and use of roles
+`role="button"`
+
 ### Avoiding disabled states
+`disabled=DONT DO IT`
+
+### Toggle Buttons
+`aria-pressed=true|false`
+
+### Tabindex
+
+`tabindex=0` needed on non button elements with `role="button"` to include in tab sequence
 
 ## Buttons in Typescript
 -  attributes

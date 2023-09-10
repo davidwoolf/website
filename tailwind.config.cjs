@@ -15,7 +15,7 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
-						"li > code, p > code, table code": {
+						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
@@ -29,12 +29,19 @@ module.exports = {
 								display: "none"
 							},
 						},
-						pre: {
+						"h2 > code, h3 > code, h4 > code": {
+							fontWeight: 700,
+						},
+						iframe: {
+							// prose-iframe:* is not supported
+							aspectRatio: "1 / 1",
 							borderRadius: "0.5rem",
-							borderWidth: 1,
-							borderStyle: "solid",
-							borderColor: theme("colors.slate.200"),
-							backgroundColor: "white",
+							boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+							marginTop: "1rem",
+
+							"@media(min-width: 768px)": {
+								aspectRatio: "16 / 9",
+							}
 						},
             a: {
 							transition: "all .2s ease",
