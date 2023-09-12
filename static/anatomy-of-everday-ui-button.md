@@ -2,7 +2,7 @@
 
 Buttons are a great example of hidden complexity. Functionality, style, and accessibility all contribute to an unseen iceberg floating beneath the surface. This article goes over the nuances of buttons and the issues that can arise when creating buttons in different contexts.
 
-## Button types
+## Types of buttons
 
 To get started, lets review what types of buttons are available on the web. A button can be of type `submit`, `reset`, or `button`. The `submit` type is the default state when the button is associated with a form or `type` is empty, missing or invalid. Here are some examples:
 
@@ -24,6 +24,8 @@ To get started, lets review what types of buttons are available on the web. A bu
 ```
 
 ### Submit buttons
+
+If your button posts data to a server, using `type=submit` is recommended.
 
 <iframe 
 width="100%" 
@@ -61,6 +63,56 @@ src="/examples/button/reset"
 title="Example and code for buttons of type reset"></iframe>
 
 When using `type="reset"` in a form, you can clear form values without any Javascript. It&rsquo;s generally not recommended to do this, but is a built-in button type nonetheless.
+
+## Content considerations
+
+Buttons can contain any content considered [phrasing](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content) content, as long as it&rsquo;s also not [interactive](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#interactive_content) content (more on that below).
+
+However, any tags such as headings and paragraphs placed inside of button will implicitly include the `role=presentation` attribute in accessibility contexts, which turns off their semantic meaning. Here&rsquo;s an example:
+
+```html
+<button>
+  <!-- the role="presentation" attribute is added by the browser in accessibility contexts -->
+  <p role="presentation">I am a paragraph</p>
+</button>
+
+<!-- this is the same as the above button -->
+<button>
+  <div>I am a paragraph</div>
+</button>
+```
+
+### Interactive content
+
+The interactive content list is a lot shorter than the phrasing list, so avoid placing these elements inside of your buttons.
+
+| element | avoid |
+| - | - |
+| `<button>` | always |
+| `<details>` | always |
+| `<embed>` | always |
+| `<iframe>` | always |
+| `<label>` | always |
+| `<select>` | always | 
+| `<textarea>` | always |
+| `<a>` | when using the `href` attribute |
+| `<audio>` | when using the controls attribute |
+| `<img>` | when using the `usemap` attribute |
+| `<input>` | if `type` is not set to `hidden` |
+| `<object>` | when using the `usemap` attribute |
+| `<video>` | when using the `controls` attribute |
+
+Of course, this never stopped anyone. But for semantics, accessibility,and compatibility, it&rsquo;s highly recommended to avoid placing interactive content within your buttons;
+
+#### Internationalization
+
+When applying styles like `writing-mode` and `text-orientation`, buttons will not rotate their text.  However, button text inside of the button will stack for vertical orientations. It is up to you to determine if you manually want to rotate buttons for differing reading directions or keep the built-in functionality.
+
+<iframe 
+width="100%" 
+src="/examples/button/international"
+title="Example and code for buttons in different language directions"></iframe>
+
 
 ## Styling
 
@@ -109,7 +161,7 @@ For the most granular control, manually changing the values is always an option.
 
 ### Affordance states
 
-Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don&rsquo;t, then some hover indication would be useful, but note this won't solve any problems on touch devices. 
+Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don&rsquo;t, then some hover indication would be useful, but note this won&rsquo;t solve any problems on touch devices. 
 
 #### Keyboard and active state feedback
 
@@ -151,6 +203,8 @@ If your button looks and acts like a regular link, use an anchor tag. This will 
 Due to the nature of buttons and their primary use in completing actions, ensuring proper accessibility markup is included is critical to creating great experiences for all actors. While the following mostly concerns non-form submission buttons, some information relating to titles and labels can be useful in all button contexts. 
 
 ### Aria attributes
+
+Generally, `aria-label` is the most popular accessibility attribute, and can be useful for buttons that do not contain text (example: icon buttons).
 
 #### Expandable content
 
@@ -202,7 +256,7 @@ src="/examples/button/aria-pressed"
 title="Example and code for using a button as a toggle"></iframe>
 
 
-_Note: This attribute won't actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
+_Note: This attribute won&rsquo;t actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
 
 ### Best user experience practices 
 
@@ -229,17 +283,18 @@ src="/examples/button/role-button"
 title="Example and code for using a div as a button"></iframe>
 
 ---
-## Notes
+## References
 
 <footer>
 
-- MDN Button Docs: <br />https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-- W3C button element reference: <br />https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html
-- WAI ARIA Button examples: <br />https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/
-- WAI ARIA Button patterns: <br />https://www.w3.org/WAI/ARIA/apg/patterns/button/
-- MDN ARIA Button roles and attributes: <br />https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
-- MDN aria-haspopup reference: <br />https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
-- DigitalA11y aria-haspopup reference: <br />https://www.digitala11y.com/aria-haspopup-properties/
-- W3C CSS3 UI Cursor information: <br />https://drafts.csswg.org/css-ui-3/#valdef-cursor-pointer
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#interactive_content
+- https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html
+- https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/
+- https://www.w3.org/WAI/ARIA/apg/patterns/button/
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
+- https://www.digitala11y.com/aria-haspopup-properties/
+- https://drafts.csswg.org/css-ui-3/#valdef-cursor-pointer
 
 </footer>
