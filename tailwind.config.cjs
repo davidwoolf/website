@@ -50,6 +50,12 @@ module.exports = {
 								textDecoration: "none",
 							}
 						},
+						"sup a": {
+							textDecoration: "none",
+							"&:hover": {
+								textDecoration: "underline"
+							}
+						},
 						"footer a": {
 							wordBreak: "break-all",
 						},
