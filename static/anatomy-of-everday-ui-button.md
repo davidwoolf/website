@@ -68,7 +68,7 @@ When using `type="reset"` in a form, you can clear form values without any Javas
 
 Buttons can contain any content considered [phrasing](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content) content, as long as it&rsquo;s also not [interactive](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#interactive_content) content (more on that below).
 
-However, any tags such as headings and paragraphs placed inside of button will implicitly include the `role=presentation` attribute in accessibility contexts, which turns off their semantic meaning. Here's an example:
+However, any tags such as headings and paragraphs placed inside of button will implicitly include the `role=presentation` attribute in accessibility contexts, which turns off their semantic meaning. Here&rsquo;s an example:
 
 ```html
 <button>
@@ -161,7 +161,7 @@ For the most granular control, manually changing the values is always an option.
 
 ### Affordance states
 
-Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don&rsquo;t, then some hover indication would be useful, but note this won't solve any problems on touch devices. 
+Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don&rsquo;t, then some hover indication would be useful, but note this won&rsquo;t solve any problems on touch devices. 
 
 #### Keyboard and active state feedback
 
@@ -256,7 +256,7 @@ src="/examples/button/aria-pressed"
 title="Example and code for using a button as a toggle"></iframe>
 
 
-_Note: This attribute won't actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
+_Note: This attribute won&rsquo;t actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
 
 ### Best user experience practices 
 
