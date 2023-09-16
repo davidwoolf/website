@@ -38,10 +38,10 @@ Submit buttons can include many form details normally applied to the `<form>` el
 
 | attribute       | description | 
 | --------------- | ----------- | 
-| **formaction**  | maps to the form element&rsquo;s `action` attribute |
-| **formmethod**  | maps to the form element&rsquo;s `method` attribute |
-| **formtarget**  | maps to the form element&rsquo;s `target` attribute |
-| **formenctype** | maps to the form element&rsquo;s `enctype` attribute |
+| **formaction**  | maps to the form element's `action` attribute |
+| **formmethod**  | maps to the form element's `method` attribute |
+| **formtarget**  | maps to the form element's `target` attribute |
+| **formenctype** | maps to the form element's `enctype` attribute |
 
 Providing these values to the submit button will override the value set on the form itself.
 
@@ -51,9 +51,9 @@ Because buttons default to `type="submit"`, use of buttons inside a form that sh
 
 #### Form validation
 
-Only submit buttons can trigger a form&rsquo;s validation process. This is referred to as "constraint validation" in the [W3C working draft](https://www.w3.org/TR/2011/WD-html5-20110525/association-of-controls-and-forms.html#barred-from-constraint-validation). This means other buttons within a form will not inadvertently trigger form validation for child fields.
+Only submit buttons can trigger a form's validation process. This is referred to as "constraint validation" in the [W3C working draft](https://www.w3.org/TR/2011/WD-html5-20110525/association-of-controls-and-forms.html#barred-from-constraint-validation). This means other buttons within a form will not inadvertently trigger form validation for child fields.
 
-Additionally, the `formnovalidate` boolean attribute can be added to control whether form validation happens or not. However, if the button&rsquo;s parent `<form>` tag includes a `novalidate` attribute and the button includes `formnovalidate="false"`, validation will still be skipped. This can be confusing since other `form*` attributes on the submit button _will_ override the parent `<form>` value of the same type.
+Additionally, the `formnovalidate` boolean attribute can be added to control whether form validation happens or not. However, if the button's parent `<form>` tag includes a `novalidate` attribute and the button includes `formnovalidate="false"`, validation will still be skipped. This can be confusing since other `form*` attributes on the submit button _will_ override the parent `<form>` value of the same type.
 
 ### Reset buttons
 
@@ -62,13 +62,13 @@ width="100%"
 src="/examples/button/reset"
 title="Example and code for buttons of type reset"></iframe>
 
-When using `type="reset"` in a form, you can clear form values without any Javascript. It&rsquo;s generally not recommended to do this, but is a built-in button type nonetheless.
+When using `type="reset"` in a form, you can clear form values without any Javascript. It's generally not recommended to do this, but is a built-in button type nonetheless.
 
 ## Content considerations
 
-Buttons can contain any content considered [phrasing](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content) content, as long as it&rsquo;s also not [interactive](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#interactive_content) content (more on that below).
+Buttons can contain any content considered [phrasing](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content) content, as long as it's also not [interactive](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#interactive_content) content (more on that below).
 
-However, any tags such as headings and paragraphs placed inside of button will implicitly include the `role=presentation` attribute in accessibility contexts, which turns off their semantic meaning. Here&rsquo;s an example:
+However, any tags such as headings and paragraphs placed inside of button will implicitly include the `role=presentation` attribute in accessibility contexts, which turns off their semantic meaning. Here's an example:
 
 ```html
 <button>
@@ -102,7 +102,7 @@ The interactive content list is a lot shorter than the phrasing list, so avoid p
 | `<object>` | when using the `usemap` attribute |
 | `<video>` | when using the `controls` attribute |
 
-Of course, this never stopped anyone. But for semantics, accessibility,and compatibility, it&rsquo;s highly recommended to avoid placing interactive content within your buttons;
+Of course, this never stopped anyone. But for semantics, accessibility,and compatibility, it's highly recommended to avoid placing interactive content within your buttons;
 
 #### Internationalization
 
@@ -122,7 +122,7 @@ Buttons are configured with default styles based on the browser and operating sy
 - border radius, weight, and color
 - color
 - height
-- font familiy, size, and weight 
+- font family, size, and weight 
 - padding
 
 There are a few ways to remove this styling by default:
@@ -134,15 +134,15 @@ title="Example and code for different ways to reset button styling"></iframe>
 
 ### Using `all: unset`
 
-The `all: unset` [css property](https://developer.mozilla.org/en-US/docs/Web/CSS/all) is a quick way to override an elements implied, explicity, and inherited styles. For top level element styling, it&rsquo;s the recommended way of resetting button styles. For child elements, you can also use `all: inherit` or `all: initial` for slightly different reset values.
+The `all: unset` [css property](https://developer.mozilla.org/en-US/docs/Web/CSS/all) is a quick way to override an elements implied, explicitly, and inherited styles. For top level element styling, it's the recommended way of resetting button styles. For child elements, you can also use `all: inherit` or `all: initial` for slightly different reset values.
 
 #### Reverting the removal of default UI
 
-Using `all: unset` on a button elimates ever getting those default styles back. Fortunately, you can use `all: revert` on a button to revert the unsetting of all that default UI. This makes it safer to control styling at the top level, knowing there is an escape hatch if needed.
+Using `all: unset` on a button eliminates ever getting those default styles back. Fortunately, you can use `all: revert` on a button to revert the resetting of all that default UI. This makes it safer to control styling at the top level, knowing there is an escape hatch if needed.
 
 #### Fixing keyboard navigation
 
-A major downside to unsetting default button styles is the loss of keyboard focus. While you can add a custom outline, that requires creating a `button:focus` style declaration and you won&rsquo;t get the same style as other default outlines. Fortunately, as seen in the CSS tab in the example above, this can be solved by adding `outline: revert` _after_ the unset declaration:
+A major downside to resetting default button styles is the loss of keyboard focus. While you can add a custom outline, that requires creating a `button:focus` style declaration and you won't get the same style as other default outlines. Fortunately, as seen in the CSS tab in the example above, this can be solved by adding `outline: revert` _after_ the unset declaration:
 
 ```css
 button {
@@ -153,15 +153,15 @@ button {
 
 ### Using `appearance: none`
 
-While `appearance: none` has much better consistency in newer browsers, it doesn&rsquo;t actually reset all of the button styling (as seen in the example above). Only the core operating system specific styling is removed.
+While `appearance: none` has much better consistency in newer browsers, it doesn't actually reset all of the button styling (as seen in the example above). Only the core operating system specific styling is removed.
 
 ### Using manual overrides
 
-For the most granular control, manually changing the values is always an option. It also prevents the removal of afforadance states like keyboard focus.
+For the most granular control, manually changing the values is always an option. It also prevents the removal of affordance states like keyboard focus.
 
 ### Affordance states
 
-Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don&rsquo;t, then some hover indication would be useful, but note this won&rsquo;t solve any problems on touch devices. 
+Buttons generally do not have any hover affordance, including changes in color, cursor, or size. This is based on the assumption that your buttons look like buttons! If they don't, then some hover indication would be useful, but note this won't solve any problems on touch devices. 
 
 #### Keyboard and active state feedback
 
@@ -221,7 +221,7 @@ Building on `aria-expanded`, if you are creating buttons that open up content co
 - grid
 - true
 
-The `aria-controls` value should be the `id` of the popup&rsquo;s top level element
+The `aria-controls` value should be the `id` of the popup's top level element
 
 <iframe 
 width="100%" 
@@ -256,7 +256,7 @@ src="/examples/button/aria-pressed"
 title="Example and code for using a button as a toggle"></iframe>
 
 
-_Note: This attribute won&rsquo;t actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
+_Note: This attribute won't actually toggle the button (that still requires Javascript), but its necessary to provide an accurate state of the button for all actors._
 
 ### Best user experience practices 
 
@@ -270,12 +270,12 @@ It is a common pattern to disable buttons until some other step is completed. _S
 | use case | alternative |
 | - | - |
 | invalid form fields | let them submit! use client and server side validation to give feedback on improper or missing values |
-| no change since last save | allow clicking and provide a notification that there&rsquo;s nothing to update |
+| no change since last save | allow clicking and provide a notification that there's nothing to update |
 | not enough access | avoid using buttons and consider removing unactionable content entirely |
 | sold out item | provide an error notification or replace the button entirely with a message that the item is sold out | 
 
 ### Using custom elements as buttons
-If a non `<button>` element has to be used to act as a button (ie: it looks and acts like a regular button), it&rsquo;s important to add additional markup to communicate that quirk to actors and devices. Here is an example of a div being used as a button:
+If a non `<button>` element has to be used to act as a button (ie: it looks and acts like a regular button), it's important to add additional markup to communicate that quirk to actors and devices. Here is an example of a div being used as a button:
 
 <iframe 
 width="100%" 
