@@ -15,7 +15,7 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
-						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code, p > em > code, a > code": {
+						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code, p > em > code, a > code, s > code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
@@ -32,6 +32,9 @@ module.exports = {
 						},
 						"a > code": {
 							textDecoration: "underline"
+						},
+						"s > code": {
+							textDecoration: "line-through"
 						},
 						"h2 > code, h3 > code, h4 > code": {
 							fontWeight: 700,

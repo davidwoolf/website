@@ -49,6 +49,12 @@ width="100%"
 src="/examples/ui-text/quotes"
 title="Example of creating quotes with the blockquote, q, and cite tags"></iframe>
 
+### Addresses and dates
+
+Use the `<address>` element for any content related to physical or digital addresses. Address details can be grouped together and include helper text like "find me at...".
+
+The `<time>` element should only be used for dates, either as a datetime or duration. Use the `datetime` attribute for machine readable values, which can help browsers present actions like "save to calendar" for the time.
+
 ## Markup elements
 
 ### Emphasis vs. separation
@@ -97,35 +103,15 @@ The `<mark>` element is the HTML equivalent of highlighting text with a marker. 
 
 ### Corrections and updates
 
-- s
+If you are updating text and want to keep the original value, use the <s>`<strike>`</s> `<s>` element. This can be great for things like article corrections.
 
-### References
+### Pre vs code
 
-- cite
-
-
-### Pre and code
-
-- pre
-- code
-
-### Addresses and dates
-
-- address
-- time
+Use the `<pre>` element for tightly controlled white space formatting. In contrast, use the `<code>` element for code samples. If you are showcasing multiple lines of code, use both elements, wrapping `<code>` inside of the `<pre>` element. In either case, characters used to create HTML elements will still need to be escaped using the relevant HTML entity value.
 
 ### Breaking lines
 
-- wbr vs br
-
-## Blocks
-
-- hr
-- aside
-- article
-- nav
-- menu
-- details and summary
+Use the `<br />` element when you absolutely want to break the line. In contrast, use the `<wbr />` element as a suggested break line when necessary. MDN provides an example<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr#examples)</sup> of the `<wbr />` tag for graceful URL formatting.
 
 ## Loading typefaces 
 
@@ -181,8 +167,6 @@ For line length, use `ch` units! These units directly tie the optical size of th
 While the section preceding this one went over text elements and how to use them, it's important to stress that the decision of which element to use should never be based on appearance. Even though default styling provided by browsers often does match element importance with styling, this will not always translate to a custom design.
 
 Plan your markup semantically first, and then apply styling based on the design. Good design will usually follow semantics and great design will take those rules and break them when appropriate.
-
-
 
 ### Text spacing
 
@@ -279,11 +263,6 @@ title="Example of overflow: hidden with different text-overflow settings"></ifra
 - fonts
 - Font pallet (new thing)
 
-### Controlling text details
-- widows and orphans
-- text-indent
-- ::first-letter, ::first-line
-
 ## Text, media, and interactive content
 
 - figure element
@@ -327,6 +306,12 @@ Heading's `aria-role` attribute accepts `tab`, `presentation`, and `none`. The `
 ### Paragraph text
 
 The `<p>` tag can accept any valid `aria-role` value. The implicit role is `paragraph`, which can be applied to other tags if they should act as a paragraph.
+
+### Formatted text
+
+- pre tag
+- use figure and caption
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre#accessibility_concerns
 
 ### Color contrast
 
