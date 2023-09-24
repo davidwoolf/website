@@ -55,6 +55,14 @@ Use the `<address>` element for any content related to physical or digital addre
 
 The `<time>` element should only be used for dates, either as a datetime or duration. Use the `datetime` attribute for machine readable values, which can help browsers present actions like "save to calendar" for the time.
 
+### Formatting and code samples
+
+Use the `<pre>` element for tightly controlled white space formatting. In contrast, use the `<code>` element for code samples. If you are showcasing multiple lines of code, use both elements, wrapping `<code>` inside of the `<pre>` element. In either case, characters used to create HTML elements will still need to be escaped using the relevant HTML entity value.
+
+### Figures
+
+When displaying an example that relates to the overall document, use the `<figure>` element. This could be an image, video, quote, code sample, etc. Additionally, a `<figcaption>` element can be added to caption the figure content.
+
 ## Markup elements
 
 ### Emphasis vs. separation
@@ -105,10 +113,6 @@ The `<mark>` element is the HTML equivalent of highlighting text with a marker. 
 
 If you are updating text and want to keep the original value, use the <s>`<strike>`</s> `<s>` element. This can be great for things like article corrections.
 
-### Pre vs code
-
-Use the `<pre>` element for tightly controlled white space formatting. In contrast, use the `<code>` element for code samples. If you are showcasing multiple lines of code, use both elements, wrapping `<code>` inside of the `<pre>` element. In either case, characters used to create HTML elements will still need to be escaped using the relevant HTML entity value.
-
 ### Breaking lines
 
 Use the `<br />` element when you absolutely want to break the line. In contrast, use the `<wbr />` element as a suggested break line when necessary. MDN provides an example<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr#examples)</sup> of the `<wbr />` tag for graceful URL formatting.
@@ -123,7 +127,7 @@ In addition, ensure your `font-family` declarations fallback to the correct gene
 
 ## Units and sizing
 
-### Avoiding pixels
+### Avoiding pixel units
 
 Using pixel based units for sizing is generally discouraged as they are considered inflexible compared to other units. They are also a lie. Considering that most computers and mobile devices now use 2x or 3x resolutions that up-sample values, setting your type to `14px` is never really 14 physical pixels.
 
@@ -168,9 +172,11 @@ While the section preceding this one went over text elements and how to use them
 
 Plan your markup semantically first, and then apply styling based on the design. Good design will usually follow semantics and great design will take those rules and break them when appropriate.
 
-### Text spacing
+### Font families and fallbacks
 
-#### Line height
+TODO
+
+### Line height
 
 Line height (also known as "leading"), controls the space between lines of text. When setting the `line-height` of a block of text, the default `normal` value equates to about 120% of the text size. That means 12.0pt text will have a line height of about 14.4pt (we're using `pt` here to avoid unit confusion).
 
@@ -181,7 +187,7 @@ width="100%"
 src="/examples/ui-text/line-height"
 title="Example of setting line heights with various units"></iframe>
 
-#### Letter spacing
+### Letter spacing
 
 Letter spacing (also known as "tracking") uniformly updates the space between letters, either in a positive (more space) or negative (less space) direction. Using `em` units will act as a multiplier on the computed font size, which is highly recommended to avoid issues with sizes changing based on the actor's preferred base size. However, the values can be extremely sensitive.
 
@@ -218,11 +224,11 @@ Tools like Figma Dev Mode only show these values in `px` or `rem` units, which a
 }
 ```
 
-#### Word spacing
+### Word spacing
 
 Word spacing acts just like letter spacing, but in between words not individual letters. 
 
-#### Watching out for non-text element spacing
+### Watching out for non-text element spacing
 
 When setting line height, letter spacing, or word spacing on an element that contains styled `inline` or `inline-block` elements, be careful to note that their spacing will be affected as well.<sup>[x](https://css-tricks.com/almanac/properties/w/word-spacing/)</sup>
 
@@ -260,42 +266,28 @@ title="Example of overflow: hidden with different text-overflow settings"></ifra
 
 
 
-- fonts
-- Font pallet (new thing)
-
-## Text, media, and interactive content
-
-- figure element
-
-### Images
-
-### Audio
-
-### Video
-
-### Iframes
-
-### Object
-
-### Noscript
-
-
-
 ## Internationalization
 
-- text-direction
-- writing mode
-- bdo and bdi
-- kbd
+### UTF-8
 
-### Local date formatting
+The [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#charset) state that <q>If the [charset] attribute is present [...] UTF-8 is the only valid encoding for HTML5 documents</q>. However, the exclusion of this value means a default character encoding *other* than UTF-8 may be used, which can create encoding issues for special characters. Therefore, ensure your site includes the following at the top of the `<head>` tag:
 
-### Currency formatting
+```html
+<meta charset="utf-8">
+```
 
-### 
-- javascript methods for dates, money, and verbiage
 
-### Bidirectional elements
+### Text direction
+
+Avoid using the `direction` css property<sup>[x](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)</sup> and opt for the `dir` attribute instead. This can be applied to the entire document via the `<html>` element or on individual elements (for example, when displaying part of the text in another language).
+
+#### Orientation and writing mode
+
+Use a combination of the `text-orientation` and `writing-mode` css properties to control how text is laid out. This is useful for languages that are read vertically and from right to left. The `text-orientation` property only works in vertical modes<sup>[x](https://drafts.csswg.org/css-writing-modes/#text-orientation)</sup>, while the `writing-mode` property can be used to set text in vertical mode for that very use case.
+
+#### Bidirectional text
+
+If you want to purposefully change the direction of a block of text, use the `<bdo>` tag in combination with the `dir` attribute.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo)</sup> If you want to wrap a block of text whose direction you don't know at run time (for example, pulling data that includes text in multiple writing modes), use the `<bdi>` tag, with no attributes required.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)</sup>
 
 ## Accessibility
 
@@ -307,6 +299,20 @@ Heading's `aria-role` attribute accepts `tab`, `presentation`, and `none`. The `
 
 The `<p>` tag can accept any valid `aria-role` value. The implicit role is `paragraph`, which can be applied to other tags if they should act as a paragraph.
 
+### Images
+
+Ensure proper alt text is provided for `<img>` elements via the `alt` attribute. Avoid using the `title` attribute as a substitute for `alt` and never create both with the same value. The `title` attribute is at most a hint to the actor, while `alt` is a textual replacement for the image itself.
+
+Additionally, add the `role="img"` value to `<img>` element when loading SVG images. This fixes a bug in VoiceOver, which, at the time of this article's publication, is still value.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#identifying_svg_as_an_image)</sup>
+
+### Audio and Video
+
+Use the [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) format for subtitles and captions, and include it via the [`<track>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track) element.
+
+### Iframes
+
+When embedding `<iframe>` content, use the `title` attribute to describe the embedded content. This can be thought of in a similar fashion to the `<title>` element used in the `<head>` of your site.
+
 ### Formatted text
 
 - pre tag
@@ -315,13 +321,16 @@ The `<p>` tag can accept any valid `aria-role` value. The implicit role is `para
 
 ### Color contrast
 
-### Organization of text
-
-
-- direction??
-
 ---
 
 ## References
 
 [TODO: auto generate these from sup tags]
+
+<!-- 
+TODO: 
+[ ] tabular data
+[ ] font families and fallbacks
+[ ] accessible pre tag data
+[ ] accessible colors
+-->
