@@ -262,17 +262,3 @@ When embedding `<iframe>` content, use the `title` attribute to describe the emb
 ### Color and readability
 
 To ensure proper text readability, use a minimum contrast ratio of `4.5:1` for body text under 18pt and `3:1` for larger text over 18pt. This conforms to AA accessibility standards<sup>[x](https://webaim.org/articles/contrast/#sc143)</sup>, which is the general standard for non-government applications.<sup>[x](https://www.w3.org/WAI/WCAG2AA-Conformance)</sup>
-
----
-
-## References
-
-[TODO: auto generate these from sup tags]
-
-<!-- 
-TODO: 
-[ ] tabular data
-[ ] font families and fallbacks
-[ ] accessible pre tag data
-[ ] accessible colors
--->
