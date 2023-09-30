@@ -90,7 +90,7 @@
       <ul>
         {#each data.references as reference}
           <li>
-            <a href={reference} target="_blank">{reference}</a>
+            <a class="break-words" href={reference} target="_blank">{reference}</a>
           </li>
         {/each}
       </ul>
