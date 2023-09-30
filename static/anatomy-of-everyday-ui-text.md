@@ -64,11 +64,11 @@ The `<em>` element is for stress emphasis in a sentence structure while the `<st
 
 ### A note about `<i>` and `<b>`
 
-In general, avoid `<b>`, it doesn't provide useful semantics around important or emphasis. Additionally, In the past, it has been common to use `<i>` for inserting icons into interfaces. This can be a useful way to handle icons, **if done correctly**. 
+In general, avoid `<b>`, it doesn't provide useful semantics around important or emphasis. In the past, it has been common to use `<i>` for inserting icons into interfaces. This can be a useful way to handle icons, **if done correctly**. 
 
-While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)</sup>, you could insert semantically meaningful icons with with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
+While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)</sup>, you could insert semantically meaningful icons with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
 
-In my opinion, this use of `<i>` is more clever than actually scalable (while remaining semantic), but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
+In my opinion, this use of `<i>` is more clever than actually scalable (while still remaining semantic), but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
 
 
 
