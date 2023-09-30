@@ -1,37 +1,34 @@
 #  The anatomy of everyday UI: text
 
-Text is a crucial part of any interface, be it a marketing site or an app. It's no wonder that HTML comes with an immense amount of tags, properties, and recommendations when it comes to handling text. This article focuses on the details of utilizing text in an app interface.
+Text is a crucial part of any interface, be it a marketing site or an app. It's no wonder that HTML comes with an immense amount of tags, properties, and recommendations when it comes to handling text. This article focuses on the details of utilizing text in a app interface.
 
-## Headings
+## Semantic elements
 
-HTML includes `<h1>` through `<h6>`, each creating a block element. When using headings, avoid multiple `<h1>` elements. It's also important to not skip heading levels in distinctive sections of content; skipping from `<h1>` to `<h3>` without including an `<h2>` is considered bad practice.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes)</sup>
+### Headings
 
-Because headings are an important semantic device for understanding the structure of a page view, consider how you want to compose app content holistically and give yourself the tools to control this structure within reusable components.
+HTML includes `<h1>` through `<h6>`, each creating a block element. When using headings, ensure that you start with `<h1>` and proceed in order<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes)</sup> (with the exception of `<h1>`, multiple headings can be used on a page). It's important to not skip heading levels; skipping from `<h1>` to `<h3>` without including an `<h2>` is considered bad practice.
 
-For example, if you have a view with a top level `<h1>` title, multiple sections marked with `<h2>` descriptors, and then a series of cards, it wouldn't make sense to bake the `<h2>` element into the card component structure. Instead, you would need to use `<h3>` for each card title (if titles are necessary of course). There are a couple ways to control this:
+- nesting headings in cards, etc
 
-- create composable components where you pass children as elements during instantiation
-- add prop arguments for heading levels
+### Paragraphs vs. spans
 
-Generally I recommend composable architectures, especially if the main goal of the component is to abstract styling rather than stateful functionality. This mirrors static HTML element structure and encourages more atomic component systems. At a certain low level however, you may need to go the prop argument route.
+The `<p>` tag encompasses a run of text (anything longer than 1-3 words and any complete sentence) and can include links, images, break lines, and more. In contrast, the `<span>` tag is an inline version of the generic `<div>` block element, and while it is a useful text wrapping element, this tag should be used as a last resort if a more semantic text element isn't appropriate.
 
-## Paragraphs and spans
+### Lists
 
-The `<p>` element encompasses a run of text (anything longer than 1-3 words and any complete sentence) and can include links, images, break lines, and more. In contrast, the `<span>` element is an inline version of the generic `<div>` block element and while it is a useful text wrapping element, it should be used as a last resort if a more semantic text element isn't appropriate.
+The `<li>` tag can be used multiple times as the direct child of the `<ul>`, `<ol>`, and `<menu>` tags. The parent tag decision comes down to semantics:
 
-The `<span>` element is however, perfect for when you need to style a block of text within a paragraph but it has no other semantic meaning that would warrant using `<em>`, `<strong>`, etc.
+| element | description |
+| - | - |
+| `<ul>` | use when the order is arbitrary |
+| `<ol>` | use when the order is important |
+| `<menu>` | use for menu items (buttons, links), technically the same as the `<ul>` element |
 
-## Lists
+### Links vs buttons
 
-In interfaces, lists are commonly used for grouping links in a navigation block. When the order isn't necessarily important, individual list items (which use the `<li>` element), can be wrapped in a `<ul>` or (if each item is interactive) a `<menu>` element.
+Linking to external sites, internal pages, page sections, and more can be accomplished with the `<a>` tag. If you are using `<a href="#">` in combination with Javascript, opt for the `<button type="button">` syntax, covered in [Anatomy of Everyday UI: buttons](/articles/anatomy-of-everday-ui-button).
 
-The core difference between `<menu>` and `<nav>` is that `<menu>` is NOT for site navigation. It's a little reductive, but use `<menu>` when grouping a list of buttons and `<nav>` when grouping a list of links.
-
-## Links and buttons
-
-Linking to other content (whether external, internal, or somewhere else on the page) can be accomplished with the `<a>` tag. If you are using `<a href="#">` in combination with JavaScript to perform non-navigation based actions, opt for the `<button>` element, covered in [Anatomy of Everyday UI: buttons](/articles/anatomy-of-everday-ui-button).
-
-## Labels
+### When to apply labels
 
 The `<label>` tag should only be used in association with elements such as `<input>`, `<textarea>`, `<select>`, and other valid form elements. Labels are considered a caption<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)</sup> for these elements, and come with useful built-in functionality such as:
 
@@ -45,33 +42,90 @@ width="100%"
 src="/examples/ui-text/labels"
 title="Example of using the label tag"></iframe>
 
-## Addresses and dates
+### Quotes
+
+The `<blockquote>` element is for block level quotes, while the `<q>` element is for inline quotations within a run of text. Both can include a cite attribute that links to the original. It is also common to use the `<cite>` element in a block level quote for more traditional citation information like the author and general source.
+
+<iframe 
+width="100%" 
+src="/examples/ui-text/quotes"
+title="Example of creating quotes with the blockquote, q, and cite tags"></iframe>
+
+### Addresses and dates
 
 Use the `<address>` element for any content related to physical or digital addresses. Address details can be grouped together and include helper text like "find me at...".
 
 The `<time>` element should only be used for dates, either as a datetime or duration. Use the `datetime` attribute for machine readable values, which can help browsers present actions like "save to calendar" for the time.
 
-- examples and attributes
+### Formatting and code samples
 
-## Emphasis and importance
+Use the `<pre>` element for tightly controlled white space formatting. In contrast, use the `<code>` element for code samples. If you are showcasing multiple lines of code, use both elements, wrapping `<code>` inside of the `<pre>` element. In either case, characters used to create HTML elements will still need to be escaped using the relevant HTML entity value.
 
-The `<em>` element is for stress emphasis in a sentence structure while the `<strong>` element is for text that is of significant importance. Because of this, it's probably rare that you would want to use `<em>` in interfaces for non-literary text. A good example of using `<strong>` is with banner notifications:
+### Figures
+
+When displaying an example that relates to the overall document, use the `<figure>` element. This could be an image, video, quote, code sample, etc. Additionally, a `<figcaption>` element can be added to caption the figure content.
+
+## Markup elements
+
+### Emphasis vs. separation
+
+The `<em>` element is for stress emphasis in a sentence structure. The `<i>` element, in contrast, can be used for calling out objects, proper nouns, or even denoting a thought inside of another block of text.
 
 ```html
+<!-- Example of using emphasis with <em> -->
+<p>You just <em>have</em> to try this!</p>
+
+<!-- Example of adding separation via <i> -->
 <p>
-  <strong>Warning!</strong> This action will delete all of your content.
+  After reading the article, he was relieved. <i>"So that's the 
+  difference between i and em!"</i> he thought.
 </p>
 ```
 
-### A note about `<i>` and `<b>`
+### Importance vs. attention
 
-In general, avoid `<b>`, it doesn't provide useful semantics around important or emphasis. Additionally, In the past, it has been common to use `<i>` for inserting icons into interfaces. This can be a useful way to handle icons, **if done correctly**. 
+The `<strong>` element is for text that is of significant importance. The `<b>` element, in contrast, can be used to draw attention to text without considering it more important:
 
-While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)</sup>, you could insert semantically meaningful icons with with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
+```html
+<!-- Example of signifying important text -->
+<p>
+  <strong>Warning!</strong> Improperly using these elements 
+  will make your children cry.
+</p>
 
-In my opinion, this use of `<i>` is more clever than actually scalable while remaining semantic, but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
+<!-- Example of drawing attention to regular text -->
+<p>
+  Check out these <b>four</b> different elements 
+  for differentiating text!
+</p>
+```
 
+### Annotations
+The `<u>` element can be used for annotations, however it's recommended to check if another element would be more appropriate.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u#other_elements_to_consider_using)</sup> One example of using `<u>` is highlighting misspelled words:
 
+```html
+<p>This word is <u>speled</u> poorly</p>
+```
+
+### Marks
+
+The `<mark>` element is the HTML equivalent of highlighting text with a marker. This could be highlighting words that match a search query, or calling out text from a source that the person citing it considers important.
+
+### Corrections and updates
+
+If you are updating text and want to keep the original value, use the <s>`<strike>`</s> `<s>` element. This can be great for things like article corrections.
+
+### Breaking lines
+
+Use the `<br />` element when you absolutely want to break the line. In contrast, use the `<wbr />` element as a suggested break line when necessary. MDN provides an example<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr#examples)</sup> of the `<wbr />` tag for graceful URL formatting.
+
+## Loading typefaces 
+
+When loading custom typefaces via [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face), the `font-display` css property can be used to control how text displays while your typefaces load. It can be tempting to use `font-display: block` to give your typefaces time to load before displaying text but this is incredibly hostile to actors on low-powered devices and long-latency networks. 
+
+By default `font-display: auto` is used, which generally acts the same as the swap value, however it's recommended to explicitly declare `font-display: swap`. This will let super fast networks load font files without flashing unstyled text but will otherwise show all text in a fallback typeface during site load.
+
+In addition, ensure your `font-family` declarations fallback to the correct generic system value to limit the affects of the change (this includes `serif`, `sans-serif`, `monospace`, `cursive` and [more](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#values))
 
 ## Units and sizing
 
@@ -212,13 +266,7 @@ width="100%"
 src="/examples/ui-text/text-overflow/line-clamp"
 title="Example of overflow: hidden with different text-overflow settings"></iframe>
 
-## Loading typefaces 
 
-When loading custom typefaces via [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face), the `font-display` css property can be used to control how text displays while your typefaces load. It can be tempting to use `font-display: block` to give your typefaces time to load before displaying text but this is incredibly hostile to actors on low-powered devices and long-latency networks. 
-
-By default `font-display: auto` is used, which generally acts the same as the swap value, however it's recommended to explicitly declare `font-display: swap`. This will let super fast networks load font files without flashing unstyled text but will otherwise show all text in a fallback typeface during site load.
-
-In addition, ensure your `font-family` declarations fallback to the correct generic system value to limit the affects of the change (this includes `serif`, `sans-serif`, `monospace`, `cursive` and [more](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#values))
 
 ## Internationalization
 
@@ -259,10 +307,19 @@ Ensure proper alt text is provided for `<img>` elements via the `alt` attribute.
 
 Additionally, add the `role="img"` value to `<img>` element when loading SVG images. This fixes a bug in VoiceOver, which, at the time of this article's publication, is still value.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#identifying_svg_as_an_image)</sup>
 
+### Audio and Video
+
+Use the [WebVTT](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) format for subtitles and captions, and include it via the [`<track>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track) element.
+
 ### Iframes
 
 When embedding `<iframe>` content, use the `title` attribute to describe the embedded content. This can be thought of in a similar fashion to the `<title>` element used in the `<head>` of your site.
 
+### Formatted text
+
+- pre tag
+- use figure and caption
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre#accessibility_concerns
 
 ### Color contrast
 
