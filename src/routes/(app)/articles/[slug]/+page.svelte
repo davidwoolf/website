@@ -81,6 +81,20 @@
     prose-hr:mb-0
   ">
     {@html data.post}
+
+    {#if data.references.length}
+      <hr />
+
+      <h2>References</h2>
+
+      <ul>
+        {#each data.references as reference}
+          <li>
+            <a href={reference} target="_blank">{reference}</a>
+          </li>
+        {/each}
+      </ul>
+    {/if}
   </article>
 </Container>
 

@@ -15,12 +15,13 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
-						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code": {
+						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code, p > em > code, a > code, s > code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),
 							borderRadius: ".25rem",
 							display: "inline-block",
 							fontSize: ".825em",
+							fontStyle: "normal",
 							fontWeight: 500,
 							margin: 0,
 							padding: "0 .2rem",
@@ -28,6 +29,12 @@ module.exports = {
 							"&:before, &:after": {
 								display: "none"
 							},
+						},
+						"a > code": {
+							textDecoration: "underline"
+						},
+						"s > code": {
+							textDecoration: "line-through"
 						},
 						"h2 > code, h3 > code, h4 > code": {
 							fontWeight: 700,
