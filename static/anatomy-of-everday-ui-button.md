@@ -28,6 +28,7 @@ To get started, lets review what types of buttons are available on the web. A bu
 If your button posts data to a server, using `type=submit` is recommended.
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/submit"
 title="Example and code for buttons of type submit"></iframe>
@@ -58,6 +59,7 @@ Additionally, the `formnovalidate` boolean attribute can be added to control whe
 ### Reset buttons
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/reset"
 title="Example and code for buttons of type reset"></iframe>
@@ -109,6 +111,7 @@ Of course, this never stopped anyone. But for semantics, accessibility,and compa
 When applying styles like `writing-mode` and `text-orientation`, buttons will not rotate their text.  However, button text inside of the button will stack for vertical orientations. It is up to you to determine if you manually want to rotate buttons for differing reading directions or keep the built-in functionality.
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/international"
 title="Example and code for buttons in different language directions"></iframe>
@@ -128,6 +131,7 @@ Buttons are configured with default styles based on the browser and operating sy
 There are a few ways to remove this styling by default:
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/default-style"
 title="Example and code for different ways to reset button styling"></iframe>
@@ -224,6 +228,7 @@ Building on `aria-expanded`, if you are creating buttons that open up content co
 The `aria-controls` value should be the `id` of the popup's top level element
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/aria-expanded"
 title="Example and code for using a button as a dialog"></iframe>
@@ -251,6 +256,7 @@ To use buttons as a toggle, make sure to include `aria-pressed` with one of the 
 
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/aria-pressed"
 title="Example and code for using a button as a toggle"></iframe>
@@ -278,6 +284,7 @@ It is a common pattern to disable buttons until some other step is completed. _S
 If a non `<button>` element has to be used to act as a button (ie: it looks and acts like a regular button), it's important to add additional markup to communicate that quirk to actors and devices. Here is an example of a div being used as a button:
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/button/role-button"
 title="Example and code for using a div as a button"></iframe>

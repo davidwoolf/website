@@ -25,7 +25,7 @@ The `<span>` element is however, perfect for when you need to style a block of t
 
 In interfaces, lists are commonly used for grouping links in a navigation block. When the order isn't necessarily important, individual list items (which use the `<li>` element), can be wrapped in a `<ul>` or (if each item is interactive) a `<menu>` element.
 
-The core difference between `<menu>` and `<nav>` is that `<menu>` is NOT for site navigation. It's a little reductive, but use `<menu>` when grouping a list of buttons and `<nav>` when grouping a list of links.
+The core difference between `<menu>` and `<nav>` is that `<menu>` is NOT for site navigation. It's a little reductive, but the rule of thumb is to use `<menu>` when grouping a list of buttons and `<nav>` when grouping a list of links.
 
 ## Links and buttons
 
@@ -41,17 +41,16 @@ The `<label>` tag should only be used in association with elements such as `<inp
 To get these benefits, you can add a `for` attribute that matches the associated element's `id` attribute value. However, a more elegant solution that nixes requiring a bunch of id attributes is to make the associated element a child of the label (incidentally, this is also a great example of when to use the `<span>` tag to style the label text separately):
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/labels"
 title="Example of using the label tag"></iframe>
 
 ## Addresses and dates
 
-Use the `<address>` element for any content related to physical or digital addresses. Address details can be grouped together and include helper text like "find me at...".
+Use the `<address>` element for any content related to physical or digital addresses. Address details can be grouped together and include informative labeling inside of the element directly.
 
-The `<time>` element should only be used for dates, either as a datetime or duration. Use the `datetime` attribute for machine readable values, which can help browsers present actions like "save to calendar" for the time.
-
-- examples and attributes
+The `<time>` element should only be used for dates, either as a datetime or duration. Use the `datetime` attribute for machine readable values, which can help browsers present actions like "save to calendar".
 
 ## Emphasis and importance
 
@@ -69,7 +68,7 @@ In general, avoid `<b>`, it doesn't provide useful semantics around important or
 
 While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)</sup>, you could insert semantically meaningful icons with with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
 
-In my opinion, this use of `<i>` is more clever than actually scalable while remaining semantic, but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
+In my opinion, this use of `<i>` is more clever than actually scalable (while remaining semantic), but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
 
 
 
@@ -90,6 +89,7 @@ When using `rem` units, all sizes are calculated from the base font size of the 
 Contrast this to `em` units, which are based on the inherited font size and will continue increasing child sizes based on the parent. 90% of the time, this will only serve to cause headaches, but it can be really useful when you want a subset of text to relationally be a percentage size of the rest of the text (say a caption):
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/size/em"
 title="Example of setting em units on parent and child elements"></iframe>
@@ -120,10 +120,6 @@ While the section preceding this one went over text elements and how to use them
 
 Plan your markup semantically first, and then apply styling based on the design. Good design will usually follow semantics and great design will take those rules and break them when appropriate.
 
-### Font families and fallbacks
-
-TODO
-
 ### Line height
 
 Line height (also known as "leading"), controls the space between lines of text. When setting the `line-height` of a block of text, the default `normal` value equates to about 120% of the text size. That means 12.0pt text will have a line height of about 14.4pt (we're using `pt` here to avoid unit confusion).
@@ -131,6 +127,7 @@ Line height (also known as "leading"), controls the space between lines of text.
 While you can use static units like `px` or `rem` as value for `line-height`, a much more flexible solution is to use no units at all! When setting the value to unitless number, it acts a multiplier for the computed font size of the text it's applied to. Importantly, this is not the same for other units like `em` or `%`.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values)</sup>
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/line-height"
 title="Example of setting line heights with various units"></iframe>
@@ -142,6 +139,7 @@ Letter spacing (also known as "tracking") uniformly updates the space between le
 *Note: this value can be inconsistent when using justified text.*
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/letter-spacing"
 title="Example of setting letter spacing on text"></iframe>
@@ -181,6 +179,7 @@ Word spacing acts just like letter spacing, but in between words not individual 
 When setting line height, letter spacing, or word spacing on an element that contains styled `inline` or `inline-block` elements, be careful to note that their spacing will be affected as well.<sup>[x](https://css-tricks.com/almanac/properties/w/word-spacing/)</sup>
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/inline-spacing"
 title="Example of setting word and letter spacing on inline block elements"></iframe>
@@ -194,6 +193,7 @@ Handling text overflowing logic can be a little complicated. The `text-overflow`
 Using overflow values can be very tricky, and requires some element coordination. When using `overflow: hidden`, the value must be applied to the text itself, the text cannot span multiple lines, and the css property `white-space: nowrap` must also be included.
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/text-overflow/overflow-hidden"
 title="Example of overflow: hidden with different text-overflow settings"></iframe>
@@ -208,21 +208,24 @@ The `-webkit-line-clamp` property (supported in all major browsers) can be used 
 - text clipping is not based on any parent container dimensions, only the text's number of lines
 
 <iframe 
+loading="lazy"
 width="100%" 
 src="/examples/ui-text/text-overflow/line-clamp"
 title="Example of overflow: hidden with different text-overflow settings"></iframe>
 
-## Loading typefaces 
+## Custom typography
+
+### Loading typefaces 
 
 When loading custom typefaces via [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face), the `font-display` css property can be used to control how text displays while your typefaces load. It can be tempting to use `font-display: block` to give your typefaces time to load before displaying text but this is incredibly hostile to actors on low-powered devices and long-latency networks. 
 
 By default `font-display: auto` is used, which generally acts the same as the swap value, however it's recommended to explicitly declare `font-display: swap`. This will let super fast networks load font files without flashing unstyled text but will otherwise show all text in a fallback typeface during site load.
 
-In addition, ensure your `font-family` declarations fallback to the correct generic system value to limit the affects of the change (this includes `serif`, `sans-serif`, `monospace`, `cursive` and [more](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#values))
+### Ensure proper fallbacks
 
-## Internationalization
+When using custom fonts, ensure your `font-family` declarations fallback to the correct generic system value to limit the affects of the change (this includes `serif`, `sans-serif`, `monospace`, `cursive` and [more](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#values)).
 
-### UTF-8
+## Proper text encoding
 
 The [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#charset) state that <q>If the [charset] attribute is present [...] UTF-8 is the only valid encoding for HTML5 documents</q>. However, the exclusion of this value means a default character encoding *other* than UTF-8 may be used, which can create encoding issues for special characters. Therefore, ensure your site includes the following at the top of the `<head>` tag:
 
@@ -230,6 +233,7 @@ The [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/met
 <meta charset="utf-8">
 ```
 
+## Internationalization
 
 ### Text direction
 
@@ -245,14 +249,6 @@ If you want to purposefully change the direction of a block of text, use the `<b
 
 ## Accessibility
 
-### Headings
-
-Heading's `aria-role` attribute accepts `tab`, `presentation`, and `none`. The `presentation` and `none` values are the semantically the same<sup>[x](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role)</sup>. The default role is `heading`, but if this is the desired value, omit the `aria-role` attribute entirely (see the full accessibility section below for using that role with *other* elements).
-
-### Paragraph text
-
-The `<p>` tag can accept any valid `aria-role` value. The implicit role is `paragraph`, which can be applied to other tags if they should act as a paragraph.
-
 ### Images
 
 Ensure proper alt text is provided for `<img>` elements via the `alt` attribute. Avoid using the `title` attribute as a substitute for `alt` and never create both with the same value. The `title` attribute is at most a hint to the actor, while `alt` is a textual replacement for the image itself.
@@ -263,8 +259,9 @@ Additionally, add the `role="img"` value to `<img>` element when loading SVG ima
 
 When embedding `<iframe>` content, use the `title` attribute to describe the embedded content. This can be thought of in a similar fashion to the `<title>` element used in the `<head>` of your site.
 
+### Color and readability
 
-### Color contrast
+To ensure proper text readability, use a minimum contrast ratio of `4.5:1` for body text under 18pt and `3:1` for larger text over 18pt. This conforms to AA accessibility standards<sup>[x](https://webaim.org/articles/contrast/#sc143)</sup>, which is the general standard for non-government applications.<sup>[x](https://www.w3.org/WAI/WCAG2AA-Conformance)</sup>
 
 ---
 
