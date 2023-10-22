@@ -732,6 +732,6 @@ That is the only difference. Everything works exactly as you expect in English, 
 | border-bottom-right-radius | border-end-end-radius |
 | border-bottom-left-radius | border-end-start-radius |
 
-You can find the full list of logical properties on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values#block_vs._inline
+You can find the full list of logical properties on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values#block_vs._inline).
 
 *Note: if you use shorthand properties for `padding`, `margin`, and `inset`, you’ll already get the benefits of logical properties without changing anything!*
