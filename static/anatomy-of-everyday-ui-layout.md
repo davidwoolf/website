@@ -1,6 +1,6 @@
 #  The anatomy of everyday UI: layout
 
-Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements need to used for screen readers and search engine crawlers, sometimes in a specific order. This article takes a deep dive into element semantics, modern layout systems in CSS, and methods for effectively laying out entire sites and applications.
+Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements need to be properly used for screen readers and search engine crawlers, sometimes in a specific order. This article takes a deep dive into element semantics, modern layout systems in CSS, and methods for effectively laying out entire sites and applications.
 
 ## Semantic elements
 
