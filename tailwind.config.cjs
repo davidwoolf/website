@@ -15,6 +15,15 @@ module.exports = {
 			typography: (theme) => ({
         DEFAULT: {
           css: {
+						"p": {
+							paddingTop: "1rem",
+						},
+						"h2 + p": {
+							paddingTop: "0.5rem"
+						},
+						"h3 + p": {
+							paddingTop: "0"
+						},
 						"h2 > code, h3 > code, h4 > code, li > code, p > code, table code, p > em > code, a > code, s > code": {
 							backgroundColor: theme("colors.slate.200"),
 							color: theme("colors.slate.900"),

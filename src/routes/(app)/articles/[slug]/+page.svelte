@@ -24,7 +24,7 @@
     prose-h2:tracking-snug
 
     prose-h3:m-0
-    prose-h3:pt-4
+    prose-h3:pt-6
     prose-h3:text-base
     prose-h3:md:text-lg
 
@@ -35,8 +35,12 @@
     prose-h4:text-base
     prose-h4:md:text-base
 
+    prose-img:mx-auto
+    prose-img:my-0
+    prose-img:rounded-lg
+
     prose-p:m-0
-    prose-p:pt-4
+    
     prose-p:text-base
     prose-p:text-gray-900
     prose-p:text-opacity-70
@@ -87,10 +91,13 @@
 
       <h2>References</h2>
 
-      <ul>
+      <ul class="not-prose text-sm">
         {#each data.references as reference}
           <li>
-            <a class="break-words" href={reference} target="_blank">{reference}</a>
+            <a
+              class="break-words hover:underline opacity-80"
+              href={reference}
+              target="_blank">{reference}</a>
           </li>
         {/each}
       </ul>
