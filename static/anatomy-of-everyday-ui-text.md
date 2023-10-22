@@ -4,7 +4,7 @@ Text is a crucial part of any interface, be it a marketing site or an app. It's 
 
 ## Headings
 
-HTML includes `<h1>` through `<h6>`, each creating a block element. When using headings, avoid multiple `<h1>` elements. It's also important to not skip heading levels in distinctive sections of content; skipping from `<h1>` to `<h3>` without including an `<h2>` is considered bad practice.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes)</sup>
+HTML includes `<h1>` through `<h6>`, each creating a block element. When using headings, avoid multiple `<h1>` elements. It's also important to not skip heading levels in distinctive sections of content; skipping from `<h1>` to `<h3>` without including an `<h2>` is considered bad practice.[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes)
 
 Because headings are an important semantic device for understanding the structure of a page view, consider how you want to compose app content holistically and give yourself the tools to control this structure within reusable components.
 
@@ -33,7 +33,7 @@ Linking to other content (whether external, internal, or somewhere else on the p
 
 ## Labels
 
-The `<label>` tag should only be used in association with elements such as `<input>`, `<textarea>`, `<select>`, and other valid form elements. Labels are considered a caption<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label)</sup> for these elements, and come with useful built-in functionality such as:
+The `<label>` tag should only be used in association with elements such as `<input>`, `<textarea>`, `<select>`, and other valid form elements. Labels are considered a caption[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) for these elements, and come with useful built-in functionality such as:
 
 - focusing the associated element
 - announcing the caption when a screen reader focuses the associated element
@@ -66,7 +66,7 @@ The `<em>` element is for stress emphasis in a sentence structure while the `<st
 
 In general, avoid `<b>`, it doesn't provide useful semantics around important or emphasis. In the past, it has been common to use `<i>` for inserting icons into interfaces. This can be a useful way to handle icons, **if done correctly**. 
 
-While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i)</sup>, you could insert semantically meaningful icons with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
+While outside of the scope of this article, the gist is that, because `<i>` is primarily for calling out a block of text as separate[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i), you could insert semantically meaningful icons with this element and [font ligatures](https://alistapart.com/article/the-era-of-symbol-fonts/). The only caveat is if you are showing icons and a text label with the same wording, as this would duplicate the value.
 
 In my opinion, this use of `<i>` is more clever than actually scalable (while still remaining semantic), but it is a valid way to handle icons (note: this does not include implementations that use a random single character for an icon, that is not semantic or helpful as a fallback).
 
@@ -105,7 +105,7 @@ When using `em` like this, be careful to set a minimum value so you don't get un
 
 ### Units based on typographic character width
 
-For line length, use `ch` units! These units directly tie the optical size of the text to the max length before breaking to a new line. Multi-line text is usually recommended to break between 45-75 characters.<sup>[x](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/#the-ideal-measure-45-to-75-characters)</sup>
+For line length, use `ch` units! These units directly tie the optical size of the text to the max length before breaking to a new line. Multi-line text is usually recommended to break between 45-75 characters.[citation](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/#the-ideal-measure-45-to-75-characters)
 
 ```css
 .article {
@@ -124,7 +124,7 @@ Plan your markup semantically first, and then apply styling based on the design.
 
 Line height (also known as "leading"), controls the space between lines of text. When setting the `line-height` of a block of text, the default `normal` value equates to about 120% of the text size. That means 12.0pt text will have a line height of about 14.4pt (we're using `pt` here to avoid unit confusion).
 
-While you can use static units like `px` or `rem` as value for `line-height`, a much more flexible solution is to use no units at all! When setting the value to unitless number, it acts a multiplier for the computed font size of the text it's applied to. Importantly, this is not the same for other units like `em` or `%`.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values)</sup>
+While you can use static units like `px` or `rem` as value for `line-height`, a much more flexible solution is to use no units at all! When setting the value to unitless number, it acts a multiplier for the computed font size of the text it's applied to. Importantly, this is not the same for other units like `em` or `%`.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#prefer_unitless_numbers_for_line-height_values)
 
 <iframe 
 loading="lazy"
@@ -176,7 +176,7 @@ Word spacing acts just like letter spacing, but in between words not individual 
 
 ### Watching out for non-text element spacing
 
-When setting line height, letter spacing, or word spacing on an element that contains styled `inline` or `inline-block` elements, be careful to note that their spacing will be affected as well.<sup>[x](https://css-tricks.com/almanac/properties/w/word-spacing/)</sup>
+When setting line height, letter spacing, or word spacing on an element that contains styled `inline` or `inline-block` elements, be careful to note that their spacing will be affected as well.[citation](https://css-tricks.com/almanac/properties/w/word-spacing/)
 
 <iframe 
 loading="lazy"
@@ -237,15 +237,15 @@ The [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/met
 
 ### Text direction
 
-Avoid using the `direction` css property<sup>[x](https://developer.mozilla.org/en-US/docs/Web/CSS/direction)</sup> and opt for the `dir` attribute instead. This can be applied to the entire document via the `<html>` element or on individual elements (for example, when displaying part of the text in another language).
+Avoid using the `direction` css property[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/direction) and opt for the `dir` attribute instead. This can be applied to the entire document via the `<html>` element or on individual elements (for example, when displaying part of the text in another language).
 
 #### Orientation and writing mode
 
-Use a combination of the `text-orientation` and `writing-mode` css properties to control how text is laid out. This is useful for languages that are read vertically and from right to left. The `text-orientation` property only works in vertical modes<sup>[x](https://drafts.csswg.org/css-writing-modes/#text-orientation)</sup>, while the `writing-mode` property can be used to set text in vertical mode for that very use case.
+Use a combination of the `text-orientation` and `writing-mode` css properties to control how text is laid out. This is useful for languages that are read vertically and from right to left. The `text-orientation` property only works in vertical modes[citation](https://drafts.csswg.org/css-writing-modes/#text-orientation), while the `writing-mode` property can be used to set text in vertical mode for that very use case.
 
 #### Bidirectional text
 
-If you want to purposefully change the direction of a block of text, use the `<bdo>` tag in combination with the `dir` attribute.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo)</sup> If you want to wrap a block of text whose direction you don't know at run time (for example, pulling data that includes text in multiple writing modes), use the `<bdi>` tag, with no attributes required.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)</sup>
+If you want to purposefully change the direction of a block of text, use the `<bdo>` tag in combination with the `dir` attribute.[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo) If you want to wrap a block of text whose direction you don't know at run time (for example, pulling data that includes text in multiple writing modes), use the `<bdi>` tag, with no attributes required.[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi)
 
 ## Accessibility
 
@@ -253,7 +253,7 @@ If you want to purposefully change the direction of a block of text, use the `<b
 
 Ensure proper alt text is provided for `<img>` elements via the `alt` attribute. Avoid using the `title` attribute as a substitute for `alt` and never create both with the same value. The `title` attribute is at most a hint to the actor, while `alt` is a textual replacement for the image itself.
 
-Additionally, add the `role="img"` value to `<img>` element when loading SVG images. This fixes a bug in VoiceOver, which, at the time of this article's publication, is still value.<sup>[x](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#identifying_svg_as_an_image)</sup>
+Additionally, add the `role="img"` value to `<img>` element when loading SVG images. This fixes a bug in VoiceOver, which, at the time of this article's publication, is still value.[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#identifying_svg_as_an_image)
 
 ### Iframes
 
@@ -261,4 +261,4 @@ When embedding `<iframe>` content, use the `title` attribute to describe the emb
 
 ### Color and readability
 
-To ensure proper text readability, use a minimum contrast ratio of `4.5:1` for body text under 18pt and `3:1` for larger text over 18pt. This conforms to AA accessibility standards<sup>[x](https://webaim.org/articles/contrast/#sc143)</sup>, which is the general standard for non-government applications.<sup>[x](https://www.w3.org/WAI/WCAG2AA-Conformance)</sup>
+To ensure proper text readability, use a minimum contrast ratio of `4.5:1` for body text under 18pt and `3:1` for larger text over 18pt. This conforms to AA accessibility standards[citation](https://webaim.org/articles/contrast/#sc143), which is the general standard for non-government applications.[citation](https://www.w3.org/WAI/WCAG2AA-Conformance)

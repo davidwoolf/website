@@ -25,12 +25,12 @@ export async function load({ fetch, params }) {
   let post = await res.text();
   
   // grab all of the matching citations
-  const references = post.match(/<sup>\[x\]\((\w|:|\/|\.|-|#)*\)<\/sup>/g);
+  const references = post.match(/\[citation\]\((\w|:|\/|\.|-|#)*\)/g);
   let links: string[] = [];
 
   if(references) {
     for(let index = 0; index < references.length; index++) {
-      const formattedValue = references[index].replace("x", String(index + 1));
+      const formattedValue = references[index].replace("citation", String(index + 1));
       
       // grab the link for later
       const link = references[index].match(/(https:\/\/)(\w|:|\/|\.|-|#)*/g);
@@ -39,7 +39,7 @@ export async function load({ fetch, params }) {
         links = links.concat([link[0]])
       }
     
-      post = post.replace(references[index], formattedValue);
+      post = post.replace(references[index], `<sup>${formattedValue}</sup>`);
     }
   }
 

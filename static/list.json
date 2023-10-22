@@ -1,15 +1,21 @@
 [
   {
+    "title": " The anatomy of everyday UI: layout",
+    "slug": "anatomy-of-everyday-ui-layout",
+    "excerpt": "Layout helps define the hierarchy and flow of content in interfaces. While styling does this visually, section level elements including divs, headers, and footers help semantically describe your interface...",
+    "tags": ["everyday ui"]
+  },
+  {
     "title": " The anatomy of everyday UI: text",
     "slug": "anatomy-of-everyday-ui-text",
     "excerpt": "Text is a crucial part of any interface, be it a marketing site or an app. It's no wonder that HTML comes with an immense amount of tags, properties, and recommendations when it comes to handling text...",
-    "tags": ["user interfaces", "accessibility"]
+    "tags": ["everyday ui"]
   },
   {
     "title": " The anatomy of everyday UI: buttons",
     "slug": "anatomy-of-everday-ui-button",
     "excerpt": "Buttons are a great example of hidden complexity. Functionality, style, and accessibility all contribute to an unseen iceberg floating beneath the surface...",
-    "tags": ["user interfaces", "accessibility"]
+    "tags": ["everyday ui"]
   },
   {
     "title": "Design states for engineers",
