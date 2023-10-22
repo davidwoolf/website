@@ -14,7 +14,7 @@ All flow content can be added to the `<body>` element[citation](https://develope
 
 The `<main>` element should wrap the core functionality of a page. Similar to the `<body>` element, `<main>` has some restrictions on its usage. Only one `<main>` element should be present and marked as visible. When including a “skip to main content” feature for keyboard navigation, it’s recommended to target the `<main>` element.
 
-Avoid including app-level UI such as global headers, navigation, and footers inside of the `<main>` element [citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main#usage_notes) unless they are the primary function of the specific page. 
+Avoid including app-level UI such as global headers, navigation, and footers inside of the `<main>` element[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main#usage_notes) unless they are the primary function of the specific page. 
 
 For older browsers, you can add the `role="main"` to a `<div>` element instead to get similar semantic meaning. However, defer to using available elements rather than roles when possible.
 
@@ -84,7 +84,7 @@ This will assist screen readers in reading and navigating content such as this.[
 
 ### Aside
 
-The `<aside>` element in an app interface would most likely be used as a sidebar.[citation](https://html.spec.whatwg.org/multipage/sections.html#the-aside-element). The most important takeaway is that content in the `<aside>` element should be considered mostly separate from the content around it.
+The `<aside>` element in an app interface would most likely be used as a sidebar.[citation](https://html.spec.whatwg.org/multipage/sections.html#the-aside-element) The most important takeaway is that content in the `<aside>` element should be considered mostly separate from the content around it.
 
 ### Divs
 
@@ -121,6 +121,13 @@ Layout shift doesn’t just happen on page load, it can also happen when animati
 When learning about layout on the web and how elements flow, you will come across the terms “block axis” and “inline axis”. These terms are intentionally named to avoid relating to physical edges (left, right, top, and bottom), because the web is viewed in a myriad of ways. Language direction and writing modes are an important part of this distinction, but also consider mobile phones: what constitutes top and bottom changes when the phone rotates. Of course, mobile phones handle this for you by rotating the entire browser UI, but it reinforces the idea that web viewing conditions change, not just device to device, but *while in session*.
 
 This article is written in English, designed top down and left to right. In that context, the “block axis” is the vertical, y-axis of a browser, while the “inline axis” is the horizontal, x-axis of a browser. The start of the block axis is the top, while the end of the block axis is the bottom. Accordingly, the start of the inline axis is the left, while the end of the inline axis is the right.
+
+<img 
+loading="lazy"
+height="764"
+width="1168"
+src="/anatomy-everyday-ui-layout/block-inline-axes.png" 
+alt="An illustration of the block and inline axes of a document">
 
 Changing the writing direction will augment these values, but they are relationally tied together. Start and end values can end up mirrored, while the inline and block axis can flip, but will always be opposed to each other.
 
@@ -195,8 +202,6 @@ The `aspect-ratio` property can also include an `auto` value, which is useful wh
 - the explicit ratio size (for example `16 / 9`) will be used until the item is loaded
 - once loaded, the item’s calculated dimensions will be used.
 
-Here is an example of all of the valid aspect ratio formats:
-
 ```css
 img {
 	aspect-ratio: 2 / 1;
@@ -215,19 +220,19 @@ img {
 
 Be aware that `aspect-ratio` can be ignored when used in combination with other layout constraints. If you define both an explicit `width` and `height`, your aspect ratio value will not be used. However, if you define either the `width` *or* `height` (but not both), the ratio will be calculated from that value:
 
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-layout/aspect-ratio/dimensions"
+title="Example of setting aspect ratio with width and height values"></iframe>
+
 | constraint | outcome |
 | --- | --- |
 | explicit width, implicit height | ratio is calculated from the width |
 | explicit height, implicit width | ratio is calculated from the height |
 | implicit width and height | ratio will not be calculated |
 
-Here is an example:
 
-<iframe 
-loading="lazy"
-width="100%" 
-src="/examples/ui-layout/aspect-ratio/dimensions"
-title="Example of setting aspect ratio with width and height values"></iframe>
 
 ### Max and min values
 
@@ -283,20 +288,12 @@ title="Example of sticky positioned elements"></iframe>
 
 ### Stacking elements
 
-Use the `z-index` property to control the “Z axis” of elements on screen. I’ve used quotes here because there isn’t a real Z axis in the DOM, but the computed visual values with this element are meant to convey a third dimension stacking value. 
-
-In order for `z-index` to have any affect, one of the following needs to be true:
+Use the `z-index` property to control the z-axis of elements on screen. In order for `z-index` to have any affect, one of the following needs to be true:
 
 - the element has a `position` value set, excluding `static`
 - the element is a direct descendant of a flex or grid container
 
-An important concept with stacking elements in the DOM is that they are scoped to the nearest ancestor that includes a valid `position` property (again, excluding `static`), meaning that they can’t be positioned higher or lower than that ancestor’s position. Confusingly, the “descendant of a flex or grid container” condition doesn’t conform to this rule, so be very careful applying `z-index` in those containers (one way to avoid this to apply `position: relative` to the flex or grid container if you plan to change its direct descendant’s stacking order):
-
-<iframe 
-loading="lazy"
-width="100%" 
-src="/examples/ui-layout/position/stack"
-title="Example of stacking elements with the z-index property"></iframe>
+An important concept with stacking elements in the DOM is that they are scoped to the nearest ancestor that includes a valid `position` property (again, excluding `static`), meaning that they can’t be positioned higher or lower than that ancestor’s position. Confusingly, the “descendant of a flex or grid container” condition doesn’t conform to this rule, so be very careful applying `z-index` in those containers (one way to avoid this to apply `position: relative` to the flex or grid container if you plan to change its direct descendant’s stacking order).
 
 A z-index value can be zero, any negative number, or any positive number. This has caused a years-long issue where new code or third party embeds will set values like 9999999999 to ensure they are at the top of the stack. Please avoid this if at all possible. Here is how I recommend tackling z-index values to avoid headaches.
 
@@ -357,7 +354,7 @@ One of the nastiest stacking issues involves displaying a blocking dialog (such 
 
 ## Flex layouts
 
-For “flexible” layouts, use `display: flex`. Flex layouts are generally placed on one axis, but can be allowed to wrap with the `flex-wrap` property.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap). If your concern is more about alignment of items in a row or column, and less about larger space relationships, opt for flex layouts. When converting an element into a flex container, the following default values will be applied:
+For “flexible” layouts, use `display: flex`. Flex layouts are generally placed on one axis, but can be allowed to wrap with the `flex-wrap` property.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) If your concern is more about alignment of items in a row or column, and less about larger space relationships, opt for flex layouts. When converting an element into a flex container, the following default values will be applied:
 
 - direct descendants will flow from the start of the main axis, next to each other. The main axis is determined by the `flex-direction` and `writing-mode` properties (which default to `row` and `horizontal-lr` respectively) making the default main axis the same as the inline axis.
 - direct descendants will be aligned to the start and end of the cross axis (the axis opposite the main axis). This means they will fill up the available space, computed from either the container’s explicit dimensions or the largest descendant in the container.
@@ -384,7 +381,14 @@ flex-basis: 2rem;
 
 The `flex-grow` property determines how any leftover space in the flex container is distributed to each direct descendant. The value of `flex-grow` is any positive number, including decimals, and defaults to `0`.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow) The value is a ratio, compared to other `flex-grow` values applied to sibling elements. 
 
-Importantly, that does not mean that three items with `flex-grow: 1` will all be 1/3rd of the container; instead each element will have an equal amount of the available space applied to their default size. You can use `flex-basis: 0` to achieve this [citation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#combining_flex-grow_and_flex-basis), but if equally spaced values for all descendants is your goal, use a grid layout.
+Importantly, that does not mean that three items with `flex-grow: 1` will all be 1/3rd of the container; instead each element will have an equal amount of the available space applied to their default size. You can use `flex-basis: 0` to achieve this[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#combining_flex-grow_and_flex-basis), but if equally spaced values for all descendants is your goal, use a grid layout.
+
+<img 
+loading="lazy"
+height="764"
+width="1168"
+src="/anatomy-everyday-ui-layout/flex-grow.png" 
+alt="An illustration of how available space in a flex container is used to grow items">
 
 Finally, the `flex-shrink` property is used when a flex container becomes too small to hold the items as configured with explicit dimensions, etc. It works in a similar way to `flex-grow` but with some slight differences to avoid shrinking items too much by default. Basically, items have a minimum size of `min-content` so as containers become smaller, elements with more generous room will decrease faster to keep everything nice and contained without hiding items.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#combining_flex-shrink_and_flex-basis)
 
@@ -406,6 +410,13 @@ Use `display: grid` to create two dimensional layouts on the block and inline ax
 
 When creating an explicit grid layout, use the `grid-template-rows` and `grid-template-columns` properties, which create tracks between the lines of a grid. If we drew four vertical lines and four horizontal lines, intersecting to create a box, we would have three column tracks and three row tracks. 
 
+<img 
+loading="lazy"
+height="764"
+width="1168"
+src="/anatomy-everyday-ui-layout/grid-tracks.png" 
+alt="An illustration of a three column by three row CSS grid, denoting the starting and ending track lines (1 and 4)">
+
 Tracks can accept a variety of values, which we go over below. They can also be named by adding `[name]` (including the brackets) right before the value:
 
 ```css
@@ -423,11 +434,12 @@ While explicit tracks are straight forward, if you have too many items to fit in
 
 There are also properties for defining implicit track dimensions more concretely, while avoiding the need to predict how many rows or columns you’ll need for variable content. The `grid-auto-rows` and `grid-auto-columns` properties accept one or multiple track values, which can be an explicit size or a responsive unit (more on that below).
 
-<iframe 
+<img 
 loading="lazy"
-width="100%" 
-src="/examples/ui-layout/grid/implicit-tracks"
-title="Example of implicit row tracks in a grid container"></iframe>
+height="764"
+width="1168"
+src="/anatomy-everyday-ui-layout/grid-implicit-tracks.png" 
+alt="An illustration of a implicit row tracks, showing three rows of varying color and dashed grid lines">
 
 ### Flexible units
 
