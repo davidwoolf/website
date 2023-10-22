@@ -90,9 +90,9 @@ The `<aside>` element in an app interface would most likely be used as a sidebar
 
 Use `<div>` elements when a semantic elements isn’t appropriate. This is usually desired when grouping child elements to control layout and styling.[citation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#usage_notes) The `<div>` element is, semantically, the block-level version of `<span>` so treat it similarly but with block level content.
 
-## Scoping layout details
+## Hoisting layout concerns
 
-An important concept for successful layouts is to scope layout details internally and remove all external layout values from individual components. Another way to think about this is “abstracting layout considerations up the DOM tree”. 
+An important concept for successful layouts is to hoist layout implementation details internally and remove all external layout values from individual components. Another way to think about this is “abstracting layout considerations up the DOM tree”. 
 
 Take a reusable card component, which in a static design may have a width, height, margins, padding, and borders. Which parts of this design are actually relevant to the card itself? Looking at elements inside of the card, do the descendants handle their positioning and spacing, or is this the responsibility of the card? 
 
@@ -156,8 +156,6 @@ When translating base components from a design comp, test them in multiple conta
 
 Use `max-height`, `max-width`, `min-height`, and `min-width` to set upper and lower constraints on an element’s dimensions. When using both constraints, the minimum value will be used over the maximum value if its larger:
 
-[EXAMPLE]
-
 ### Intrinsic dimensions
 
 There are lesser known sizing values available in CSS, known as *intrinsic keywords*. They are `max-content`, `min-content`, and `fit-content`. The values can be used with `width` and `height`(including their min/max counterparts), `grid-template-columns` and `grid-template-rows`. 
@@ -168,7 +166,11 @@ The `min-content` value represents the minimum theoretical size without distorti
 
 Finally, `fit-content` will use a combination of `min-content` and `max-content`, filling up to the container if necessary, but stopping beforehand if the content is smaller than the container.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content)
 
-[EXAMPLE]
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-layout/intrinsic-dimensions"
+title="Example of setting intrinsic dimensions on text"></iframe>
 
 ## Spacing
 
@@ -421,7 +423,11 @@ While explicit tracks are straight forward, if you have too many items to fit in
 
 There are also properties for defining implicit track dimensions more concretely, while avoiding the need to predict how many rows or columns you’ll need for variable content. The `grid-auto-rows` and `grid-auto-columns` properties accept one or multiple track values, which can be an explicit size or a responsive unit (more on that below).
 
-[EXAMPLE]
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-layout/grid/implicit-tracks"
+title="Example of implicit row tracks in a grid container"></iframe>
 
 ### Flexible units
 
@@ -465,7 +471,11 @@ grid-template-rows: 1rem 2rem 3rem 1rem 2rem 3rem 1rem 2rem 3rem
 
 Once you have your grid setup, elements can be configured to span multiple tracks. This is possible with four grid specific CSS properties: `grid-row-start`, `grid-row-end`, `grid-column-start`, `grid-column-end`. Each of these properties takes a starting line number *or* `span [number]` where `[number]` is the number of tracks to fill. Note that the starting line number is not the track itself. For example, a three column grid has four lines, which complete a box:
 
-[EXAMPLE]
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-layout/grid/span-tracks"
+title="Example of spanning multiple tracks in a grid container"></iframe>
 
 To make an element fill all three columns, you can do:
 

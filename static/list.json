@@ -2,7 +2,7 @@
   {
     "title": " The anatomy of everyday UI: layout",
     "slug": "anatomy-of-everyday-ui-layout",
-    "excerpt": "Layout helps define the hierarchy and flow of content in interfaces. While styling does this visually, section level elements including divs, headers, and footers help semantically describe your interface...",
+    "excerpt": "Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements...",
     "tags": ["everyday ui"]
   },
   {
