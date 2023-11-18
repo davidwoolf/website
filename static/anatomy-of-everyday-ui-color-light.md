@@ -1,6 +1,6 @@
 #  The anatomy of everyday UI: color and light
 
-Color makes interfaces feel alive. Highlights and shadows create depth and tactility. If layout and text are the foundation of an interface, color and light are definitely the personality.
+Color and light provide personality, depth, and tactility to interfaces. With multiple color spaces, powerful gradient and composition filter functions, element shadows, and inter-color interactions, the possibilities for color on the web are now endless.
 
 ## Color spaces and gamuts
 
@@ -119,7 +119,7 @@ color: oklab(100%, 100%, 100% / 1);
 
 ### LCH
 
-The `lch()` function accepts values for lightness, chroma, hue, and an alpha value and can display any color in the CIE color gamut.[citation]([https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lab](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch)). Lightness is represented as a number between `0-100`, a percentage between `0%-100%` or `none`. Chroma can be an unbounded positive number `0-n`, a percentage between `0%-100%`, or `none`. In this case, `100%` equals the number `150`. Like HSL and HWB, hue is represented as a number, angle or `none`. Finally, the alpha channel can be represented as a number between `0-1` or a percentage between `0%-100%`, just like LAB.
+The `lch()` function accepts values for lightness, chroma, hue, and an alpha value and can display any color in the CIE color gamut.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/lch). Lightness is represented as a number between `0-100`, a percentage between `0%-100%` or `none`. Chroma can be an unbounded positive number `0-n`, a percentage between `0%-100%`, or `none`. In this case, `100%` equals the number `150`. Like HSL and HWB, hue is represented as a number, angle or `none`. Finally, the alpha channel can be represented as a number between `0-1` or a percentage between `0%-100%`, just like LAB.
 
 ```css
 /* syntax options */
@@ -154,7 +154,6 @@ Many other color spaces can be rendered using the `color()` function, which can 
 color: color(srgb 1 0 0 / 1);
 color: color(srgb-linear 1 0 0 / 1);
 color: color(display-p3 1 0 0 / 1);
-color: color(a98-rgb 1 0 0 / 1);
 color: color(prophoto-rgb 1 0 0 / 1);
 color: color(rec2020 1 0 0 / 1);
 color: color(xyz 1 0 0 / 1);
@@ -176,11 +175,29 @@ The `display-p3` color space renders all colors available in the Display P3 colo
 
 The `rec2020` color space renders all colors available in the Rec2020 color gamut and supports about 37% more colors than Display P3.[citation](https://www.displaymate.com/Display_Color_Gamuts_1.htm) However, display support is much smaller for Rec2020 versus Display P3 at the time of this writing.
 
-[TODO]
-- a98
-- prophoto
-- xyz, xyz-50, xyz-65
-- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut
+Both of these spaces (along with `srgb`) can be safely utilized with fallbacks, by checking the `color-gamut` media query[citation](https://developer.chrome.com/articles/high-definition-css-color-guide/#checking-for-gamut-and-color-space-support):
+
+```css
+@media (color-gamut: srgb) {
+  /* safe to use srgb colors */
+}
+
+@media (color-gamut: p3) {
+  /* safe to use p3 colors */
+}
+
+@media (color-gamut: rec2020) {
+  /* safe to use rec2020 colors */
+}
+```
+
+In addition, support for other color spaces like `xyz` can be checked with the `@supports` query:
+
+```css
+@supports (background: color(xyz 0 0 0)) {
+  /* safe to use xyz colors */
+}
+```
 
 ## Polar color spaces and hue interpolation
 
@@ -227,9 +244,40 @@ width="1168"
 src="/anatomy-everyday-ui-color/increasing-decreasing-hue.png" 
 alt="Examples of increasing and decreasing hue calculations">
 
+## System colors
+
+CSS includes many system colors, which inherit from the operating system and browser, along with keywords like `currentcolor`, which inherit from colors defined on the current element or its ancestors.
+
+### Current color
+
+The `currentcolor` keyword uses the value applied to the CSS `color` property for the *current*element. This includes inherited color values, and can be used anywhere a valid color type is allowed.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) The `currentcolor` keyword can also be interpolated, meaning animations applied to color values on ancestor elements will happen on descendants as well.
+
+When applying the `color` property to an element:
+
+- all descendant element’s text inherits the same color, unless they specify their own value
+- the container’s and descendant’s borders also inherit the color, again unless they specify their own value
+
+However, things like `background-color` do not inherit the `color` property’s value and setting a value like `inherit` only applies when the parent container also has a specified `background-color`.  This is where `currentcolor` can be powerful, especially when working with SVG elements. 
+
+Applying `currentcolor` to the `fill` and `stroke` attributes of SVG elements like `<path>` will ensure the value matches the closest applied color value, even if that means using the default color applied to the entire document. This can be a very powerful tool when managing an SVG icon library in component systems: use `currentcolor` for fills and strokes, inherit colors everywhere and–when needed–explicitly set the color using a wrapper element.
+
+### System colors
+
+System colors include various keywords to apply colors based on default document colors such as backgrounds, text, active colors, etc. As with `currentcolor`, system color values can be used anywhere a valid color type is allowed.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/system-color) Importantly, these keywords are not using values you applied to the `<html>` or `<body>` elements, but rather static values based on the browser, operating system, and user agent overrides. 
+
+Some examples of system colors include the static document background color `Canvas` and the static document text color `CanvasText`. What makes these values really interesting, is that you can utilize them to auto apply dark mode values that match your system and browser. In order to do so, you’ll need to add a `color-scheme` value to the root of your document, noting that both light and dark schemes are supported.[citation](https://blog.jim-nielsen.com/2021/css-system-colors/)
+
+```css
+:root {
+  color-scheme: light dark;
+}
+```
+
+You can also assign `color-scheme` to just `light` or `dark` to force a specific mode and still use system colors with the correct value. What’s more, you can apply the value to any element, not just `:root`! If you’re trying to force a specific color scheme, it’s recommended that you add the `only` keyword in front to strongly suggest to browsers that the document can only support one color scheme.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme#only)
+
 ## Gradients
 
-Gradients created in CSS are considered image types, which impacts where they can be applied. You can’t assign a gradient to the `color` or `background-color` properties, but you can apply them to properties that support the image type, including `background` and `list-style-image`.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/image)
+Gradients created in CSS are considered image types, which impacts where they can be applied. You can’t assign a gradient to the `color` or `background-color` properties, but you can apply them to properties that support the image type, including `background`, `background-image`, and `list-style-image`.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/image)
 
 ### Linear gradients
 
@@ -439,9 +487,14 @@ Polar color spaces such as `hsl`, `hwb`, `lch`, and `oklch` also support all the
 background: linear-gradient(to right in hsl longer hue, red, blue);
 ```
 
-More information on hue interpolation can be found in the “Polar color spaces and hue interpolation” section of this article.
-
 ## Color mixing
+
+<img 
+loading="lazy"
+height="764"
+width="1168"
+src="/anatomy-everyday-ui-color/color-mix.png" 
+alt="Mix two colors to produce an entirely new color">
 
 Use the `color-mix()` function to combine two colors, with varying percentages of each color.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix) By default, each color is mixed equally, producing a color mixed with `50%` of the first color and `50%` of second color. 
 
@@ -450,7 +503,7 @@ Use the `color-mix()` function to combine two colors, with varying percentages o
 color-mix(in <color-space>, <color> <percentage>, <color> <percentage>);
 ```
 
-The `in <color-space>` value refers to the interpolation method mixing will use, as spaces like `lch` and `srgb` will mix colors differently. Importantly, the passed in color values can be any valid `<color>` and do not need to be formatted in the matching color space:
+The `in <color-space>` value refers to the interpolation method mixing will use, as spaces like `lch` and `srgb` will mix colors differently. Importantly, the passed in color values can be any valid `<color>` and do not need to be formatted in the matching color space.
 
 ```css
 
@@ -479,8 +532,6 @@ Polar color spaces such as `hsl`, `hwb`, `lch`, and `oklch` also support all the
 /* Example of hue interpolation in polar color spaces */
 color-mix(in hsl longer hue, blue, red);
 ```
-
-More information on hue interpolation can be found in the “Polar color spaces and hue interpolation” section of this article.
 
 ### Normalized percentage values
 
@@ -569,19 +620,26 @@ The coordinate offsets (`x` and `y`) can be any positive or negative length. A p
 
 The blur radius value can be any positive length, where larger values makes the shadow larger but also more spread out, lightening the overall shadow. The spread radius value can be any positive or negative length and will expand or contract the shadow. Setting the blur radius to `0` and the spread radius to any value greater than `1` will create a sharp edged shadow offset.
 
-[EXAMPLE]
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-color-light/drop-shadow"
+title="Example of blur and spread radii on box shadows"></iframe>
 
 #### Inset shadows
 
 Using the `inset` keyword converts the outer shadow into an inner shadow. All other values are still allowed, but will create a depressed effect instead of an elevated effect:
 
-[EXAMPLE]
+
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-color-light/inset-shadow"
+title="Example of an inset box shadow"></iframe>
 
 #### Multiple shadows
 
-Multiple shadows can be specified with commas `,` and are stacked with the first shadow on top. If the number of shadows differ between animation states, a default “shadow” with 0 length values and a transparent color are used, which results in a consistent animation effect that doesn’t flicker shadows:
-
-[EXAMPLE OF ANIMATION WITH DIFFERENT NUMBER OF SHADOWS]
+Multiple shadows can be specified with commas `,` and are stacked with the first shadow on top. If the number of shadows differ between animation states, a default “shadow” with 0 length values and a transparent color are used.
 
 ### Text shadows
 
@@ -589,19 +647,17 @@ Unlike the `box-shadow` property, `text-shadow` creates shadows around text char
 
 ### Global lighting source and depth
 
-When creating depth using shadows, its important to keep lighting sources consistent and to use intensity differences to denote layers. All shadows should use either positive or negative coordinate values to denote the global light source (positive values being in the top left, negative values being the top or bottom right), while playing with the values of the x, y, blur, and spread radiuses. Smaller radiuses with lighter values indicate elements close the surface, while larger and darker values indicate elements farther away from the surface..
+When creating depth using shadows, its important to keep lighting sources consistent and to use intensity differences to denote layers. All shadows should use either positive or negative coordinate values to denote the global light source (positive values being in the top left, negative values being the top or bottom right), while playing with the values of the x, y, blur, and spread radiuses. Smaller radiuses with lighter values indicate elements close the surface, while larger and darker values indicate elements farther away from the surface.
 
 Shadows can also be paired with gradients to reinforce light sources. This combination can be used to create more skeuomorphic UI elements.
 
 ## Filters and blend modes
 
-Color, light, and shadow are powerful tools to indicate depth, context, and interactivity. With CSS properties like `filter`, `backdrop-filter`, and `mix-blend-mode`, they can now be applied dynamically to images, objects, containers, and text.
+With CSS properties like `filter`, `backdrop-filter`, and `mix-blend-mode` color, light, and depth can now be applied dynamically to images, objects, containers, and text.
 
 ### Filters
 
-The `filter` property applies composite rendering effects via special use functions to any element or group of elements.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/filter) Unlike static affects applied to imported images, they can react to the environment via DOM updates, scrolling, and animations. 
-
-Like the `transform` property, effects are computed using the local coordinates of the target element without affecting surrounding elements, even if effects break out of the original dimensions of the element. Functions can also be stacked and affect each other, meaning just a change to the function order can create a different effect. The following functions are supported:
+The `filter` property applies composite rendering effects to any element or group of elements–via specialized functions.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/filter) Unlike static affects applied to imported images, they can react to the environment via DOM updates, scrolling, and animations:
 
 ```css
 /* supported functions syntax */
@@ -617,6 +673,8 @@ filter: saturate(<percentage>);
 filter: sepia(<percentage>);
 filter: url(<image>);
 ```
+
+Effects are computed using the local coordinates of the target element without affecting surrounding elements and functions can be stacked and combined, meaning just a change to the function order can create a different effect.
 
 #### Blur
 
@@ -660,7 +718,7 @@ The `opacity()` function applies a transparency value to the element and its des
 
 The `saturate()` function adds or removes saturation to the element and its descendants.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate) Any positive number or percentage is accepted, and defaults to 1 (the same as 100%) for both the value and interpolation value. A 100% saturation means no change has occurred. Anything less than 100% (or 1) will desaturate the element, while anything above 100% will increase it.
 
-#### sepia
+#### Sepia
 
 The `sepia()` function increases color sepia in the element and its descendants.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/sepia). Any value between `0-1` or percentage between `0-100%` is accepted, and defaults to 1 (fully sepia). However, the interpolation value defaults to 0.
 
@@ -668,17 +726,28 @@ The `sepia()` function increases color sepia in the element and its descendants.
 
 The `url()` function can be used to apply filter values from an SVG element. The value must point to an existing SVG image and a valid filter property within it. Covering SVG filters is outside the scope of this article and more information can be found [here](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter).
 
-#### Animation and interpolation
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-color-light/filters"
+title="Example of available CSS filters"></iframe>
+
+### Animation and interpolation
 
 When animating the `filter` property, be aware that some functions change their starting value if left empty. For example, the `grayscale()`, `sepia()` and `invert()` functions can be called without a value to apply their affect fully (ie: omitting a value defaults them to `1`). However, if animated, their starting value reverts to `0` , so when animating filters you are most likely better off settings values for all functions.
 
 ### Backdrop filters
 
-The `backdrop-filter` includes all of the same function options as `filter`, but applies it to anything *****behind***** the current element. This means the current element must also include some transparency in order to see the effect.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter) Currently, safari requires the `-webkit-` prefix for this property.
+The `backdrop-filter` includes all of the same function options as `filter`, but applies it to anything *behind* the current element. This means the current element must also include some transparency in order to see the effect.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter) Currently, safari requires the `-webkit-` prefix for this property.
 
 Background blur affects are a popular use of this property, blurring content passing underneath the element the `backdrop-filter` property has been applied to.
 
-[EXAMPLE]
+<iframe 
+loading="lazy"
+width="100%" 
+src="/examples/ui-color-light/backdrop-filters"
+title="Example of CSS backdrop filters"></iframe>
+
 
 ### Blend modes
 
@@ -708,35 +777,42 @@ By default, elements will interact with both each other and the background. Use 
 
 There is also a `background-blend-mode` property that applies blend modes to just the background image and color values on an element.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode)
 
-[EXAMPLE]
+## Accessibility
 
-## System colors
+Color is expressive and can be used to convey intent in an interface. However, some actors of your application will interpret colors as the same or not see them at all due to limited sight, color vision deficiency, or because they are using a display with limited color support. Here are some tips and things to know about using color in ways accessible to everyone.
 
-CSS includes many system colors, which inherit from the operating system and browser, along with keywords like `currentcolor`, which inherit from colors defined on the current element or its ancestors.
+### Conveying information with more than color
 
-### Current color
+There is a concept in user interface design called affordances. An affordance communicates interactivity without instructions or diagrams. Shape, weight, separation, depth, and yes color are all used as affordance properties and when done consistently, they allow actors to quickly and subconsciously navigate your application.
 
-The `currentcolor` keyword uses the value applied to the CSS `color` property for the ********current******** element. This includes inherited color values, and can be used anywhere a valid color type is allowed.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) The `currentcolor` keyword can also be interpolated, meaning animations applied to color values on ancestor elements will happen on descendants as well.
+#### Default states
 
-When applying the `color` property to an element:
+Using color as the sole affordance for an interactive element is discouraged due to the limits it puts on actors that can’t sensitively discern different colors. However, this does not mean that every interactive element needs a persisted border or an underline. Separation, weight, and iconography are all great properties to help reinforce affordance.
 
-- all descendant element’s text inherits the same color, unless they specify their own value
-- the container’s and descendant’s borders also inherit the color, again unless they specify their own value
+For example, when creating inline links within a block of text, indicating the link with color alone is not recommended. Underlines, font weight and size, and iconography can be used in place of or alongside color to communicate an inline link (importantly, you do not need all four, pick a couple that work for your design and keep them consistent). Additionally, separating a row of navigation from other content is a type of affordance and reduces the amount of extra affordance properties necessary to convey interactivity.
 
-However, things like `background-color` do not inherit the `color` property’s value and setting a value like `inherit` only applies when the parent container also has a specified `background-color`.  This is where `currentcolor` can be powerful, especially when working with SVG elements. 
+*Note: Separation affordances can be subjective because application styles can be disabled by actors. In that case browser defaults for buttons, links, etc should suffice, but I also recommend testing this situation and providing additional affordances if you are unsure.*
 
-Applying `currentcolor` to the `fill` and `stroke` attributes of SVG elements like `<path>` will ensure the value matches the closest applied color value, even if that means using the default color applied to the entire document. This can be a very powerful tool when managing an SVG icon library in component systems: use `currentcolor` for fills and strokes, inherit colors everywhere and–when needed–explicitly set the color using a wrapper element.
+#### Hover, focus and binary states
 
-### System colors
+In addition to conveying default affordances with more than just color; hover, focus, and binary states (for example: enabled or disabled) should also be conveyed with additional affordance properties. Binary states can usually be handled by changing the text label value (which is already a common practice), while focus states can use the built-in browser outline values without changing anything.
 
-System colors include various keywords to apply colors based on default document colors such as backgrounds, text, active colors, etc. As with `currentcolor`, system color values can be used anywhere a valid color type is allowed.[citation]([https://developer.mozilla.org/en-US/docs/Web/CSS/system-color](https://developer.mozilla.org/en-US/docs/Web/CSS/system-color#accentcolor)) Importantly, these keywords are not using values you applied to the `<html>` or `<body>` elements, but rather static values based on the browser, operating system, and user agent overrides. 
+One small affordance trick for hovers is to change the mouse cursor on hover. The act of hovering implies a mouse pointer is present, so this should be a safe operation.
 
-Some examples of system colors include the static document background color `Canvas` and the static document text color `CanvasText`. What makes these values really interesting, is that you can utilize them to auto apply dark mode values that match your system and browser. In order to do so, you’ll need to add a `color-scheme` value to the root of your document, noting that both light and dark schemes are supported.[citation](https://blog.jim-nielsen.com/2021/css-system-colors/)
+### Forced Colors
+
+Some actors will have a forced color palette enabled on their system, usually indicating high contrast. When this is detected, the browser will override many color and shadow values defined in your custom styles.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors#properties_affected_by_forced-color_mode) Overriding forced colors is not recommended, but there are a couple features in CSS to interact with the forced colors mode. One is the `forced-colors-adjust` property, which will prevent system overrides and keep your styles:
 
 ```css
-:root {
-  color-scheme: light dark;
-}
+forced-colors-adjust: none;
 ```
 
-You can also assign `color-scheme` to just `light` or `dark` to force a specific mode and still use system colors with the correct value. What’s more, you can apply the value to any element, not just `:root`! If you’re trying to force a specific color scheme, it’s recommended that you add the `only` keyword in front to strongly suggest to browsers that the document can only support one color scheme.[citation](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme#only)
+The other is the `forced-colors` media query, which will be set to `active` when forced colors mode is detected on the system:
+
+```css
+@media (forced-colors: active) {
+	element {
+		/* ...properties */
+	}
+}
+```

@@ -109,45 +109,128 @@
   <div slot="html" class="tab__code">
     <Code
       language="html"
-      code={`<div class="box calculate-from-width-and-height">
-  <p>width & height</p>
+      code={`<div class="container">
+<div class="box sticky">
+  <p>sticky header</p>
 </div>
 
-<div class="box calculate-from-width">
-  <p>width</p>
+<div class="box">
+  <p>item</p>
 </div>
 
-<div class="box calculate-from-height">
-  <p>height</p>
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+
+<div class="box">
+  <p>item</p>
+</div>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
+</div>
+<div class="box">
+<p>item</p>
 </div>`} />
   </div>
   <div slot="css" class="tab__code">
     <Code
       language="css"
-      code={`.box {
+      code={`.container {
+  border: 1px solid rgb(19 78 74 / 0.1);
+}
+
+.box {
   align-items: center;
-  background-color: rgb(19 78 74 / 0.1);
+  background-color: white;
+  border-bottom: 1px solid rgb(19 78 74 / 0.1);
   color: rgb(55 65 81);
   display: flex;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   justify-content: center;
-  margin: 1rem auto;
 }
 
-.calculate-from-width-and-height {
-  aspect-ratio: 1 / 1;
-  height: 8rem;
-  width: 6rem;
-}
-
-.calculate-from-width {
-  aspect-ratio: 1 / 1;
-  width: 6rem;
-}
-
-.calculate-from-height {
-  aspect-ratio: 1 / 1;
-  height: 6rem;
+.box.sticky {
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }`} />
   </div>
 </Tabs>
