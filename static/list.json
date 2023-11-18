@@ -1,5 +1,11 @@
 [
   {
+    "title": " The anatomy of everyday UI: color and light",
+    "slug": "anatomy-of-everyday-ui-color-light",
+    "excerpt": "Color and light provide personality, depth, and tactility to interfaces. With multiple color spaces, powerful gradient and composition filter functions, element shadows, and inter-color interactions...",
+    "tags": ["everyday ui"]
+  },
+  {
     "title": " The anatomy of everyday UI: layout",
     "slug": "anatomy-of-everyday-ui-layout",
     "excerpt": "Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements...",

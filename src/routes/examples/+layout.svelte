@@ -20,7 +20,6 @@
 
   .main {
     height: 100vh;
-
     position: relative;
     width: 100vw;
   }
@@ -61,7 +60,6 @@
   }
 
   :global(.tab__code) {
-    display: flex;
     flex: 1 1 auto;
     height: 100%;
     overflow: scroll;
