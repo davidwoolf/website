@@ -6,6 +6,10 @@
     "divs",
     "Iframes",
     "minmax",
+    "OKLAB",
+    "OKLCH",
+    "skeuomorphic",
+    "srgb",
     "unitless"
   ]
 }

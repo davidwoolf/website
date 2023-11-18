@@ -1,5 +1,11 @@
 [
   {
+    "title": " The anatomy of everyday UI: color and light",
+    "slug": "anatomy-of-everyday-ui-color-light",
+    "excerpt": "Color makes interfaces feel alive. Highlights and shadows create depth and tactility. If layout and text are the foundation of an interface, color and light are definitely the personality...",
+    "tags": ["everyday ui"]
+  },
+  {
     "title": " The anatomy of everyday UI: layout",
     "slug": "anatomy-of-everyday-ui-layout",
     "excerpt": "Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements...",
