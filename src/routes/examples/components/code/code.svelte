@@ -49,8 +49,4 @@
     ) {
     color: #047857;
   }
-
-  :global() {
-    color: #064e3b;
-  }
 </style>
