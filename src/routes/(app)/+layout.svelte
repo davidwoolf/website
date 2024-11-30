@@ -10,6 +10,8 @@
       <a class="border-b" href="/articles">articles</a>
 
       <a class="border-b" href="https://github.com/davidwoolf" target="_blank">github</a>
+
+      <a class="border-b" href="https://bsky.app/profile/davidwoolf.me" target="_blank">bluesky</a>
     </nav>
   </header>
 
