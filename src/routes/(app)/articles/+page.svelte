@@ -10,7 +10,7 @@
 <Container>
   <Heading1>Articles</Heading1>
 
-  <div class=" divide-y">
+  <div class="divide-y">
     {#each data.items as article (article.slug)}
       <article class="py-8">
         <Heading2>
