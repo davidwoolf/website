@@ -1,0 +1,153 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": ".*",
+			"continue": true,
+			"transforms": [
+				{
+					"type": "request.query",
+					"op": "delete",
+					"target": {
+						"key": "__pathname"
+					}
+				}
+			]
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"status": 404,
+			"continue": false
+		},
+		{
+			"src": "^/?(?:/__data.json)?$",
+			"dest": "/(app)"
+		},
+		{
+			"src": "^/articles/?(?:/__data.json)?$",
+			"dest": "/(app)/articles"
+		},
+		{
+			"src": "^/articles/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/(app)/articles/[slug]"
+		},
+		{
+			"src": "^/examples/button/aria-expanded/?(?:/__data.json)?$",
+			"dest": "/examples/button/aria-expanded"
+		},
+		{
+			"src": "^/examples/button/aria-pressed/?(?:/__data.json)?$",
+			"dest": "/examples/button/aria-pressed"
+		},
+		{
+			"src": "^/examples/button/default-style/?(?:/__data.json)?$",
+			"dest": "/examples/button/default-style"
+		},
+		{
+			"src": "^/examples/button/international/?(?:/__data.json)?$",
+			"dest": "/examples/button/international"
+		},
+		{
+			"src": "^/examples/button/reset/?(?:/__data.json)?$",
+			"dest": "/examples/button/reset"
+		},
+		{
+			"src": "^/examples/button/role-button/?(?:/__data.json)?$",
+			"dest": "/examples/button/role-button"
+		},
+		{
+			"src": "^/examples/button/submit/?(?:/__data.json)?$",
+			"dest": "/examples/button/submit"
+		},
+		{
+			"src": "^/examples/ui-color-light/backdrop-filters/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/backdrop-filters"
+		},
+		{
+			"src": "^/examples/ui-color-light/drop-shadow/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/drop-shadow"
+		},
+		{
+			"src": "^/examples/ui-color-light/filters/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/filters"
+		},
+		{
+			"src": "^/examples/ui-color-light/inset-shadow/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/inset-shadow"
+		},
+		{
+			"src": "^/examples/ui-color-light/repeating-background-gradients/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/repeating-background-gradients"
+		},
+		{
+			"src": "^/examples/ui-color-light/repeating-gradients/?(?:/__data.json)?$",
+			"dest": "/examples/ui-color-light/repeating-gradients"
+		},
+		{
+			"src": "^/examples/ui-layout/aspect-ratio/dimensions/?(?:/__data.json)?$",
+			"dest": "/examples/ui-layout/aspect-ratio/dimensions"
+		},
+		{
+			"src": "^/examples/ui-layout/aspect-ratio/flex/?(?:/__data.json)?$",
+			"dest": "/examples/ui-layout/aspect-ratio/flex"
+		},
+		{
+			"src": "^/examples/ui-layout/grid/span-tracks/?(?:/__data.json)?$",
+			"dest": "/examples/ui-layout/grid/span-tracks"
+		},
+		{
+			"src": "^/examples/ui-layout/intrinsic-dimensions/?(?:/__data.json)?$",
+			"dest": "/examples/ui-layout/intrinsic-dimensions"
+		},
+		{
+			"src": "^/examples/ui-layout/position/sticky/?(?:/__data.json)?$",
+			"dest": "/examples/ui-layout/position/sticky"
+		},
+		{
+			"src": "^/examples/ui-text/inline-spacing/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/inline-spacing"
+		},
+		{
+			"src": "^/examples/ui-text/labels/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/labels"
+		},
+		{
+			"src": "^/examples/ui-text/letter-spacing/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/letter-spacing"
+		},
+		{
+			"src": "^/examples/ui-text/line-height/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/line-height"
+		},
+		{
+			"src": "^/examples/ui-text/size/em/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/size/em"
+		},
+		{
+			"src": "^/examples/ui-text/text-overflow/line-clamp/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/text-overflow/line-clamp"
+		},
+		{
+			"src": "^/examples/ui-text/text-overflow/overflow-hidden/?(?:/__data.json)?$",
+			"dest": "/examples/ui-text/text-overflow/overflow-hidden"
+		},
+		{
+			"src": "^/resume/?(?:/__data.json)?$",
+			"dest": "/(app)/resume"
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
+		}
+	],
+	"overrides": {}
+}

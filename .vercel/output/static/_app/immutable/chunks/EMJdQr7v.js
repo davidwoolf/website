@@ -1,0 +1,1 @@
+import{R as e,S as t,g as n,it as r,w as i}from"./BjW1HMUo.js";import"./xihTtKlq.js";import"./Dc3nDKb_.js";var a=i(`<h1 class="text-gray-900 text-xl md:text-2xl font-bold tracking-tight"><!></h1>`);function o(i,o){var s=a();n(e(s),o,`default`,{},null),r(s),t(i,s)}export{o as t};

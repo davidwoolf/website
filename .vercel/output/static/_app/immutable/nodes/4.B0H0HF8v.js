@@ -1,0 +1,1 @@
+import{R as e,S as t,g as n,it as r,w as i}from"../chunks/BjW1HMUo.js";import"../chunks/xihTtKlq.js";import"../chunks/Dc3nDKb_.js";var a=i(`<main class="main svelte-tlygdj"><div class="content svelte-tlygdj"><!></div></main>`);function o(i,o){var s=a(),c=e(s);n(e(c),o,`default`,{},null),r(c),r(s),t(i,s)}export{o as component};

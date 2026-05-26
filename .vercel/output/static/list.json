@@ -1,0 +1,50 @@
+[
+  {
+    "title": " The anatomy of everyday UI: color and light",
+    "slug": "anatomy-of-everyday-ui-color-light",
+    "excerpt": "Color and light provide personality, depth, and tactility to interfaces. With multiple color spaces, powerful gradient and composition filter functions, element shadows, and inter-color interactions...",
+    "tags": ["everyday ui"]
+  },
+  {
+    "title": " The anatomy of everyday UI: layout",
+    "slug": "anatomy-of-everyday-ui-layout",
+    "excerpt": "Well defined layouts on the web are no easy task. Many decisions, across multiple components, need to sync up for proper alignment, spacing, and hierarchy on devices ranging from phones to televisions. In addition, semantically accurate elements...",
+    "tags": ["everyday ui"]
+  },
+  {
+    "title": " The anatomy of everyday UI: text",
+    "slug": "anatomy-of-everyday-ui-text",
+    "excerpt": "Text is a crucial part of any interface, be it a marketing site or an app. It's no wonder that HTML comes with an immense amount of tags, properties, and recommendations when it comes to handling text...",
+    "tags": ["everyday ui"]
+  },
+  {
+    "title": " The anatomy of everyday UI: buttons",
+    "slug": "anatomy-of-everday-ui-button",
+    "excerpt": "Buttons are a great example of hidden complexity. Functionality, style, and accessibility all contribute to an unseen iceberg floating beneath the surface...",
+    "tags": ["everyday ui"]
+  },
+  {
+    "title": "Design states for engineers",
+    "slug": "design-states-for-engineers",
+    "excerpt": "While modern design tools provide powerful prototyping and dynamic layout, it's not always clear how a static design should be translated to an interactive interface with various design states...",
+    "tags": ["design systems", "front end"]
+  },
+  {
+    "title": "Building a combobox for Melt UI",
+    "slug": "melt-combobox",
+    "excerpt": "These past few weeks, I have been working on an accessible combobox with my good friend and amazing developer, Eric Skram...",
+    "tags": ["svelte", "accessibility"]
+  },
+  {
+    "title": "Using window.postMessage with React",
+    "slug": "using-window-postmessage-react",
+    "excerpt": "The window.postMessage function provides a simple way to talk to other window object. However, implementing it in React requires a little more setup...",
+    "tags": ["react"]
+  },
+  {
+    "title": "Building davidwoolf.me",
+    "slug": "building-davidwoolf-me",
+    "excerpt": "A quick dive into the technology this site was built on.",
+    "tags": ["svelte"]
+  }
+]

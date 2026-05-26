@@ -13,6 +13,6 @@ export async function load({ fetch }) {
   }
 
   return {
-    items: res.json(),
+    items: await res.json(),
   };
 }
