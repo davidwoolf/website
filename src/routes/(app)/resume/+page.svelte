@@ -1,8 +1,25 @@
 <script lang="ts">
   import { assets } from "$app/paths";
+  import { marked } from "marked";
   import Heading1 from "@components/text/heading1.svelte";
 
-  const experience = [
+  interface Section {
+    company: string;
+    description: string;
+    // Optional: omitted for non-job sections like Projects and Skills.
+    icon?: string;
+    color?: string;
+    position?: string;
+    startDate?: string;
+    endDate?: string;
+  }
+
+  // Render a markdown block to HTML so descriptions can use links, bold, etc.
+  function md(text: string): string {
+    return marked.parse(text) as string;
+  }
+
+  const sections: Section[] = [
     {
       company: "Tempest",
       position: "Lead designer and senior front-end engineer",
@@ -71,6 +88,22 @@ Created internal tooling to streamline site development workflows.
 
 Championed adoption of React for new projects, driving larger and more complex engagements for the agency.`,
     },
+    {
+      company: "Projects",
+      description: `**Anatomy UI** — Creator of [anatomyui.com](https://anatomyui.com), an interactive reference for front end engineers on building UI for the web
+
+**Melt UI** — Contributor to Melt UI, a headless accessibility-focused component library for Svelte`,
+    },
+    {
+      company: "Skills",
+      description: `**Languages:** TypeScript, JavaScript, CSS, HTML5, GraphQL, SQL, Git
+
+**Frameworks & Libraries:** Svelte, SvelteKit, React, Next.js, Remix, TanStack, Vercel AI SDK, Tailwind, Styled Components, Jest, React Testing Library, Vite, Node, Express, Deno
+
+**Tools & Platforms:** Supabase, Figma, Linear, Claude Code, Vercel, Webpack, SWC, Playwright, GitHub Actions
+
+**Design:** Design systems, component libraries, brand identity, marketing design`,
+    },
   ];
 </script>
 
@@ -80,38 +113,42 @@ Championed adoption of React for new projects, driving larger and more complex e
 
   <div>
     <p class="font-medium">User interface designer and front-end engineer</p>
-    <p class="opacity-60 text-base">San Diego, California • woolf.david@gmail.com</p>
+    <p class="opacity-60">San Diego, California • woolf.david@gmail.com</p>
   </div>
 
-  {#each experience as job, index (index)}
-    {@const description = job.description.split("\n").filter((item) => item !== "")}
-
+  {#each sections as section, index (index)}
     {#if index > 0}
-      <div role="presentation" aria-hidden="true" class="border-b col-span-full" />
+      <div role="presentation" aria-hidden="true" class="border-b col-span-full print:hidden" />
     {/if}
-    <article>
+    <article class="break-inside-avoid">
       <div>
         <div class="flex items-center gap-4">
-          <div
-            style:background={job.color}
-            class="w-8 h-8 flex items-center justify-center rounded-lg">
-            <img
-              class="w-5 flex-none contain"
-              src="{assets}/logos/{job.icon}"
-              alt={job.company} />
+          {#if section.icon}
+            <div
+              style:background={section.color}
+              class="w-8 h-8 flex items-center justify-center rounded-lg print:hidden">
+              <img
+                class="w-5 flex-none contain"
+                src="{assets}/logos/{section.icon}"
+                alt={section.company} />
+            </div>
+          {/if}
+          <h2 class="text-lg font-semibold">{section.company}</h2>
+        </div>
+        {#if section.position || section.startDate || section.endDate}
+          <div class="pt-4">
+            {#if section.position}
+              <p class="font-medium text-balance leading-1">{section.position}</p>
+            {/if}
+            {#if section.startDate || section.endDate}
+              <p class="opacity-60">{section.startDate} — {section.endDate}</p>
+            {/if}
           </div>
-          <h2 class="text-lg font-semibold">{job.company}</h2>
-        </div>
-        <div class="pt-4">
-          <p class="font-medium text-balance leading-1">{job.position}</p>
-          <p class="opacity-60">{job.startDate} — {job.endDate}</p>
-        </div>
+        {/if}
       </div>
 
-      <div class="flex flex-col gap-4 pt-4 md:pt-0">
-        {#each description as item, index (index)}
-          <p>{item}</p>
-        {/each}
+      <div class="section-description flex flex-col gap-4 pt-4 md:pt-0">
+        {@html md(section.description)}
       </div>
     </article>
   {/each}
@@ -126,5 +163,14 @@ Championed adoption of React for new projects, driving larger and more complex e
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: subgrid;
+  }
+  
+  .section-description :global(a) {
+    text-decoration: underline;
+    transition: all .2s ease;
+    
+    &:hover {
+      opacity: .6;
+    }
   }
 </style>
